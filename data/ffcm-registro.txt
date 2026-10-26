@@ -1,1 +1,2 @@
 senior: 15 equipos, jornadas con partidos 3,4,5
+juvenil: 10 equipos, jornadas con partidos 1,2,3
