@@ -103,18 +103,28 @@ Textos.iniciar(() => {
 
 // Último partido según la FFCM, con el resultado calculado a partir de la clasificación
 // (herramientas/ffcm.mjs). El día del partido aún no está: los goles se ponen a mano.
-Ffcm.iniciar((d) => {
-  if (!d.ultima) Ffcm.falta(d);
-  const p = Ffcm.nuestroPartido(d.ultima);
-  if (!p) return `Jornada ${d.ultima.n}: descansamos`;
-  Estudio.ponerPartido(p);
-  const partido = d.ultima.partidos.find((x) => Ffcm.esNuestro(x.local) || Ffcm.esNuestro(x.visitante));
-  const goles = partido?.goles ? (p.enCasa ? partido.goles : [...partido.goles].reverse()) : ["", ""];
-  for (const [id, clave, valor] of [["goles-nuestros", "golesNuestros", goles[0]], ["goles-rival", "golesRival", goles[1]]]) {
+function ponerGoles(nuestros, rival) {
+  for (const [id, clave, valor] of [["goles-nuestros", "golesNuestros", nuestros], ["goles-rival", "golesRival", rival]]) {
     estado[clave] = String(valor);
     document.getElementById(id).value = valor;
   }
   Estudio.refrescar();
+}
+
+Ffcm.iniciar((d) => {
+  const p = d.ultima && Ffcm.nuestroPartido(d.ultima);
+  if (!p) {
+    // Sin partido de esta categoría (no ha empezado la liga, descansamos…): se vacía para
+    // que no se quede el de la otra categoría.
+    Estudio.ponerPartido({ rival: "", escudo: "", enCasa: true });
+    ponerGoles("", "");
+    if (!d.ultima) Ffcm.falta(d);
+    return `Jornada ${d.ultima.n}: descansamos`;
+  }
+  Estudio.ponerPartido(p);
+  const partido = d.ultima.partidos.find((x) => Ffcm.esNuestro(x.local) || Ffcm.esNuestro(x.visitante));
+  const goles = partido?.goles ? (p.enCasa ? partido.goles : [...partido.goles].reverse()) : ["", ""];
+  ponerGoles(goles[0], goles[1]);
   const resultado = partido?.goles ? ` · ${partido.goles.join("-")}` : " (pon los goles)";
   return `Jornada ${d.ultima.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival}${resultado}`;
 });

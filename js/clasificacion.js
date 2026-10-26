@@ -209,8 +209,21 @@ Textos.iniciar(() => {
 
 // Los 5 equipos alrededor de nosotros en la clasificación de la FFCM.
 Ffcm.iniciar((d) => {
-  if (!d.ultima) Ffcm.falta(d);
   const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
+  if (!d.ultima) {
+    // Aún no hay clasificación de esta categoría: se vacía para que no se quede la otra.
+    const jornada = document.getElementById("jornada");
+    jornada.value = "";
+    disparar(jornada, "input");
+    document.querySelectorAll(".fila-tabla").forEach((fila, i) => {
+      const [, sel, , puntos] = fila.children;
+      sel.value = i === 0 ? NUESTRO : "";
+      disparar(sel, "change");
+      puntos.value = "";
+      disparar(puntos, "input");
+    });
+    Ffcm.falta(d);
+  }
   const tabla = d.clasificacion;
   const nuestra = tabla.findIndex((f) => Ffcm.esNuestro(f.equipo));
   const desde = Math.max(0, Math.min(tabla.length - FILAS, nuestra - 2));
