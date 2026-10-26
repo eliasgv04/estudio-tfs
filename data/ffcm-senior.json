@@ -1,0 +1,411 @@
+{
+ "actualizado": "2026-10-26T14:47:33.396Z",
+ "jornadas": [
+  {
+   "n": 1,
+   "fecha": "2026-10-10"
+  },
+  {
+   "n": 2,
+   "fecha": "2026-10-17"
+  },
+  {
+   "n": 3,
+   "fecha": "2026-10-24"
+  },
+  {
+   "n": 4,
+   "fecha": "2026-10-31"
+  },
+  {
+   "n": 5,
+   "fecha": "2026-11-07"
+  },
+  {
+   "n": 6,
+   "fecha": "2026-11-14"
+  },
+  {
+   "n": 7,
+   "fecha": "2026-11-21"
+  },
+  {
+   "n": 8,
+   "fecha": "2026-11-28"
+  },
+  {
+   "n": 9,
+   "fecha": "2026-12-05"
+  },
+  {
+   "n": 10,
+   "fecha": "2026-12-12"
+  },
+  {
+   "n": 11,
+   "fecha": "2026-12-19"
+  },
+  {
+   "n": 12,
+   "fecha": "2027-01-09"
+  },
+  {
+   "n": 13,
+   "fecha": "2027-01-16"
+  },
+  {
+   "n": 14,
+   "fecha": "2027-01-23"
+  },
+  {
+   "n": 15,
+   "fecha": "2027-01-30"
+  },
+  {
+   "n": 16,
+   "fecha": "2027-02-13"
+  },
+  {
+   "n": 17,
+   "fecha": "2027-02-20"
+  },
+  {
+   "n": 18,
+   "fecha": "2027-02-27"
+  },
+  {
+   "n": 19,
+   "fecha": "2027-03-06"
+  },
+  {
+   "n": 20,
+   "fecha": "2027-03-13"
+  },
+  {
+   "n": 21,
+   "fecha": "2027-03-20"
+  },
+  {
+   "n": 22,
+   "fecha": "2027-04-03"
+  },
+  {
+   "n": 23,
+   "fecha": "2027-04-10"
+  },
+  {
+   "n": 24,
+   "fecha": "2027-04-17"
+  },
+  {
+   "n": 25,
+   "fecha": "2027-04-24"
+  },
+  {
+   "n": 26,
+   "fecha": "2027-05-01"
+  },
+  {
+   "n": 27,
+   "fecha": "2027-05-08"
+  },
+  {
+   "n": 28,
+   "fecha": "2027-05-15"
+  },
+  {
+   "n": 29,
+   "fecha": "2027-05-22"
+  },
+  {
+   "n": 30,
+   "fecha": "2027-05-29"
+  }
+ ],
+ "clasificacion": [
+  {
+   "pos": 1,
+   "equipo": "VILLARRUBIA FS",
+   "pts": 6,
+   "pj": 2,
+   "gf": 22,
+   "gc": 4
+  },
+  {
+   "pos": 2,
+   "equipo": "ACEITES MORAL ORO F.S. \"B\"",
+   "pts": 6,
+   "pj": 2,
+   "gf": 12,
+   "gc": 9
+  },
+  {
+   "pos": 3,
+   "equipo": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
+   "pts": 6,
+   "pj": 3,
+   "gf": 15,
+   "gc": 12
+  },
+  {
+   "pos": 4,
+   "equipo": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+   "pts": 6,
+   "pj": 3,
+   "gf": 14,
+   "gc": 11
+  },
+  {
+   "pos": 5,
+   "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
+   "pts": 6,
+   "pj": 3,
+   "gf": 12,
+   "gc": 10
+  },
+  {
+   "pos": 6,
+   "equipo": "CONSTR. NACO F.S. PIEDRABUENA",
+   "pts": 6,
+   "pj": 3,
+   "gf": 9,
+   "gc": 7
+  },
+  {
+   "pos": 7,
+   "equipo": "FUTBOL SALA RENACER ARGAMASILLA",
+   "pts": 6,
+   "pj": 3,
+   "gf": 7,
+   "gc": 5
+  },
+  {
+   "pos": 8,
+   "equipo": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+   "pts": 3,
+   "pj": 2,
+   "gf": 7,
+   "gc": 5
+  },
+  {
+   "pos": 9,
+   "equipo": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+   "pts": 3,
+   "pj": 2,
+   "gf": 11,
+   "gc": 10
+  },
+  {
+   "pos": 10,
+   "equipo": "C.D. SAN CARLOS DEL VALLE",
+   "pts": 4,
+   "pj": 3,
+   "gf": 7,
+   "gc": 10
+  },
+  {
+   "pos": 11,
+   "equipo": "F.S. PORZUNA",
+   "pts": 3,
+   "pj": 3,
+   "gf": 11,
+   "gc": 11
+  },
+  {
+   "pos": 12,
+   "equipo": "C.D. F.S. CHILLON",
+   "pts": 3,
+   "pj": 3,
+   "gf": 7,
+   "gc": 10
+  },
+  {
+   "pos": 13,
+   "equipo": "FUTSAL CORRALEÑO",
+   "pts": 1,
+   "pj": 3,
+   "gf": 8,
+   "gc": 13
+  },
+  {
+   "pos": 14,
+   "equipo": "C.D. CARRIÓN DE CALATRAVA F.S.",
+   "pts": 0,
+   "pj": 2,
+   "gf": 4,
+   "gc": 10
+  },
+  {
+   "pos": 15,
+   "equipo": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
+   "pts": 0,
+   "pj": 3,
+   "gf": 6,
+   "gc": 25
+  }
+ ],
+ "partidos": {
+  "3": {
+   "descansa": "C.D. CARRIÓN DE CALATRAVA F.S.",
+   "partidos": [
+    {
+     "local": "ACEITES MORAL ORO F.S. \"B\"",
+     "visitante": "C.D. F.S. CHILLON",
+     "fecha": "2026-10-24",
+     "hora": "17:00",
+     "campo": "P.M. DE MORAL DE CALATRAVA"
+    },
+    {
+     "local": "FUTBOL SALA RENACER ARGAMASILLA",
+     "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+     "fecha": "2026-10-24",
+     "hora": "17:00",
+     "campo": "P.M. DE ARGAMASILLA DE ALBA"
+    },
+    {
+     "local": "VILLARRUBIA FS",
+     "visitante": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
+     "fecha": "2026-10-24",
+     "hora": "18:00",
+     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
+    },
+    {
+     "local": "FUTSAL CORRALEÑO",
+     "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "fecha": "2026-10-24",
+     "hora": "19:00",
+     "campo": "PABELLON JUAN DE DIOS ROMAN"
+    },
+    {
+     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
+     "fecha": "2026-10-24",
+     "hora": "19:10",
+     "campo": "P.M. DE TORRENUEVA"
+    },
+    {
+     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "visitante": "C.D. SAN CARLOS DEL VALLE",
+     "fecha": "2026-10-24",
+     "hora": "19:30",
+     "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "F.S. PORZUNA",
+     "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
+     "fecha": "2026-10-24",
+     "hora": "20:00",
+     "campo": "P.M. DE PORZUNA"
+    }
+   ]
+  },
+  "4": {
+   "descansa": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
+   "partidos": [
+    {
+     "local": "C.D. F.S. CHILLON",
+     "visitante": "FUTSAL CORRALEÑO",
+     "fecha": "2026-10-30",
+     "hora": "21:00",
+     "campo": "P.M. DE CHILLON"
+    },
+    {
+     "local": "CONSTR. NACO F.S. PIEDRABUENA",
+     "visitante": "ACEITES MORAL ORO F.S. \"B\"",
+     "fecha": "2026-10-31",
+     "hora": "12:30",
+     "campo": "P.M. DE PIEDRABUENA"
+    },
+    {
+     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "visitante": "FUTBOL SALA RENACER ARGAMASILLA",
+     "fecha": "2026-10-31",
+     "hora": "16:00",
+     "campo": "P.M. DE CARRION DE CALATRAVA"
+    },
+    {
+     "local": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
+     "visitante": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "fecha": "2026-10-31",
+     "hora": "16:30",
+     "campo": "PABELLÓN DON BOSCO"
+    },
+    {
+     "local": "C.D. SAN CARLOS DEL VALLE",
+     "visitante": "VILLARRUBIA FS",
+     "fecha": "2026-10-31",
+     "hora": "19:00",
+     "campo": "PABELLON MANOLO EL DEL BOMBO"
+    },
+    {
+     "local": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+     "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "fecha": "2026-10-31",
+     "hora": "19:00",
+     "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "visitante": "F.S. PORZUNA",
+     "fecha": "2026-10-31",
+     "hora": "21:00",
+     "campo": "COMPLEJO DEPORTIVO EUFEMIO VELASCO"
+    }
+   ]
+  },
+  "5": {
+   "descansa": "FUTBOL SALA RENACER ARGAMASILLA",
+   "partidos": [
+    {
+     "local": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
+     "visitante": "C.D. SAN CARLOS DEL VALLE",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "P.M. DE DAIMIEL"
+    },
+    {
+     "local": "VILLARRUBIA FS",
+     "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
+    },
+    {
+     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "F.S. PORZUNA",
+     "visitante": "C.D. F.S. CHILLON",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "P.M. DE PORZUNA"
+    },
+    {
+     "local": "FUTSAL CORRALEÑO",
+     "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "PABELLON JUAN DE DIOS ROMAN"
+    },
+    {
+     "local": "ACEITES MORAL ORO F.S. \"B\"",
+     "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "P.M. DE MORAL DE CALATRAVA"
+    },
+    {
+     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-11-07",
+     "hora": "",
+     "campo": "P.M. DE TORRENUEVA"
+    }
+   ]
+  }
+ }
+}
