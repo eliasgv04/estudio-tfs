@@ -255,7 +255,7 @@ Textos.iniciar(() => {
 // Partidos de la última jornada según la FFCM, con los goles calculados a partir de la
 // clasificación (herramientas/ffcm.mjs). Si alguno no cuadra, queda vacío para ponerlo a mano.
 Ffcm.iniciar((d) => {
-  if (!d.ultima) Ffcm.falta();
+  if (!d.ultima) Ffcm.falta(d);
   const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
   const partidos = d.ultima.partidos;
   const jornada = document.getElementById("jornada");

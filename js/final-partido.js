@@ -104,7 +104,7 @@ Textos.iniciar(() => {
 // Último partido según la FFCM, con el resultado calculado a partir de la clasificación
 // (herramientas/ffcm.mjs). El día del partido aún no está: los goles se ponen a mano.
 Ffcm.iniciar((d) => {
-  if (!d.ultima) Ffcm.falta();
+  if (!d.ultima) Ffcm.falta(d);
   const p = Ffcm.nuestroPartido(d.ultima);
   if (!p) return `Jornada ${d.ultima.n}: descansamos`;
   Estudio.ponerPartido(p);

@@ -88,7 +88,12 @@ const Ffcm = (() => {
     Estudio.listo.then(rellenar);
   }
 
-  const falta = () => {
+  // Para cuando la plantilla necesita una jornada que no está en los datos.
+  const falta = (datos) => {
+    const hoy = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
+    if (datos.jornadas.length && datos.jornadas[0].fecha > hoy) {
+      throw new Error(`La liga empieza el ${Textos.fechaTexto(datos.jornadas[0].fecha)}`);
+    }
     throw new Error("Los datos de la FFCM no llegan a esta jornada (se actualizan los lunes)");
   };
 

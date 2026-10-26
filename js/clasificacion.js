@@ -209,6 +209,7 @@ Textos.iniciar(() => {
 
 // Los 5 equipos alrededor de nosotros en la clasificación de la FFCM.
 Ffcm.iniciar((d) => {
+  if (!d.ultima) Ffcm.falta(d);
   const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
   const tabla = d.clasificacion;
   const nuestra = tabla.findIndex((f) => Ffcm.esNuestro(f.equipo));

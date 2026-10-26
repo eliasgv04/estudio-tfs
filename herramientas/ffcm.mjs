@@ -19,7 +19,7 @@ const BASE = "https://www.ffcm.es/pnfg";
 // Grupo de cada equipo en la FFCM (de la URL NFG_VisGrupos_Vis?...&codgrupo=...).
 const GRUPOS = {
   senior: { temporada: 22, competicion: 22916226, grupo: 23193707 },
-  // juvenil: { temporada: 22, competicion: ..., grupo: ... },
+  juvenil: { temporada: 22, competicion: 23352276, grupo: 23382105 },
 };
 
 const UA = "Mozilla/5.0 (compatible; EstudioTorrenueva/1.0; +https://estudio-torrenueva.vercel.app)";
@@ -79,7 +79,11 @@ function leerClasificacion(html) {
     const celdas = [...tr.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((c) => limpiar(c[1].replace(/<[^>]+>/g, " ")));
     // [color, pos, equipo, pts/pj, pts, J G E P en casa, J G E P fuera, F, C, ...]
     const num = (i) => Number(celdas[i]) || 0;
-    filas.push({ pos: num(1), equipo: limpiar(equipo[1]), pts: num(4), pj: num(5) + num(9), gf: num(13), gc: num(14) });
+    const nombre = limpiar(equipo[1]);
+    // Antes de la primera jornada no hay "Jornada Anterior" y entran las dos tablas:
+    // cada equipo solo una vez.
+    if (filas.some((f) => f.equipo === nombre)) continue;
+    filas.push({ pos: num(1), equipo: nombre, pts: num(4), pj: num(5) + num(9), gf: num(13), gc: num(14) });
   }
   return filas;
 }
