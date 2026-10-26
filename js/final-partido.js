@@ -100,3 +100,12 @@ Textos.iniciar(() => {
     [mensajeResultado()],
   );
 });
+
+// Último partido según la FFCM (los goles se ponen a mano: la FFCM no deja leerlos).
+Ffcm.iniciar((d) => {
+  if (!d.ultima) Ffcm.falta();
+  const p = Ffcm.nuestroPartido(d.ultima);
+  if (!p) return `Jornada ${d.ultima.n}: descansamos`;
+  Estudio.ponerPartido(p);
+  return `Jornada ${d.ultima.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival} (pon los goles)`;
+});

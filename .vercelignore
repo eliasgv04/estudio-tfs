@@ -4,3 +4,8 @@ assets/iconos/*.JPG
 
 # Claves de Vercel: nunca se publican
 .env*
+
+# Herramientas internas (lector de la FFCM y su GitHub Action)
+herramientas/
+.github/
+data/ffcm-registro.txt

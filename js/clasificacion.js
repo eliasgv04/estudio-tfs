@@ -206,3 +206,34 @@ Textos.iniciar(() => {
     ["➡️ Desliza para ver los resultados de la jornada"],
   );
 });
+
+// Los 5 equipos alrededor de nosotros en la clasificación de la FFCM.
+Ffcm.iniciar((d) => {
+  const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
+  const tabla = d.clasificacion;
+  const nuestra = tabla.findIndex((f) => Ffcm.esNuestro(f.equipo));
+  const desde = Math.max(0, Math.min(tabla.length - FILAS, nuestra - 2));
+
+  const jornada = document.getElementById("jornada");
+  jornada.value = d.ultima?.n ?? "";
+  disparar(jornada, "input");
+  const primera = document.getElementById("primera-posicion");
+  primera.value = tabla[desde].pos;
+  disparar(primera, "input");
+
+  document.querySelectorAll(".fila-tabla").forEach((fila, i) => {
+    const f = tabla[desde + i];
+    if (!f) return;
+    const [, sel, nombre, puntos] = fila.children;
+    const r = Ffcm.esNuestro(f.equipo) ? null : Ffcm.rival(f.equipo);
+    sel.value = r ? r.escudo : NUESTRO;
+    disparar(sel, "change");
+    if (r && !r.escudo) {
+      nombre.value = r.nombre;
+      disparar(nombre, "input");
+    }
+    puntos.value = f.pts;
+    disparar(puntos, "input");
+  });
+  return `Clasificación tras la jornada ${d.ultima?.n ?? "?"}: vamos ${tabla[nuestra]?.pos}º`;
+});

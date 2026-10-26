@@ -2,116 +2,139 @@
   {
     "nombre": "CD Ciudad de Puertollano",
     "escudo": "assets/rivales/ciudaddepuertollano.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "CIUDAD DE PUERTOLLANO"
   },
   {
     "nombre": "CD San Carlos FS",
     "escudo": "assets/rivales/sancarlos.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "SAN CARLOS"
   },
   {
     "nombre": "Carrión FS",
     "escudo": "assets/rivales/carrion.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "CARRION"
   },
   {
     "nombre": "Chillón FS",
     "escudo": "assets/rivales/chillon.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "CHILLON"
   },
   {
     "nombre": "Corraleño FS",
     "escudo": "assets/rivales/corraleno.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "CORRALE"
   },
   {
     "nombre": "Daimiel FS B",
     "escudo": "assets/rivales/daimiel.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "DAIMIEL"
   },
   {
     "nombre": "FS Renacer Argamasilla",
     "escudo": "assets/rivales/argamasilla.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "ARGAMASILLA"
   },
   {
     "nombre": "Moral FS B",
     "escudo": "assets/rivales/moral.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "MORAL"
   },
   {
     "nombre": "Piedrabuena FS",
     "escudo": "assets/rivales/piedrabuena.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "PIEDRABUENA"
   },
   {
     "nombre": "Porzuna FS",
     "escudo": "assets/rivales/porzuna.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "PORZUNA"
   },
   {
     "nombre": "Puertollano FS",
     "escudo": "assets/rivales/puertollano.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "PUERTOLLANO"
   },
   {
     "nombre": "Salesianos Ciudad Real",
     "escudo": "assets/rivales/salesianos.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "SALESIANOS"
   },
   {
     "nombre": "Torralbeño FS",
     "escudo": "assets/rivales/torralba.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "TORRALBE"
   },
   {
     "nombre": "Villarrubia FS",
     "escudo": "assets/rivales/villarrubia.png",
-    "categoria": "senior"
+    "categoria": "senior",
+    "clave": "VILLARRUBIA"
   },
   {
     "nombre": "CD Ciudad de Puertollano Juvenil",
     "escudo": "assets/rivales/ciudaddepuertollano.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "CIUDAD DE PUERTOLLANO"
   },
   {
     "nombre": "Carrión FS Juvenil",
     "escudo": "assets/rivales/carrion.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "CARRION"
   },
   {
     "nombre": "Corraleño FS Juvenil",
     "escudo": "assets/rivales/corraleno.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "CORRALE"
   },
   {
     "nombre": "Daimiel FS Juvenil",
     "escudo": "assets/rivales/daimiel.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "DAIMIEL"
   },
   {
     "nombre": "FS La Solana Juvenil",
     "escudo": "assets/rivales/lasolana.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "SOLANA"
   },
   {
     "nombre": "Manzanares FS Juvenil",
     "escudo": "assets/rivales/manzanares.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "MANZANARES"
   },
   {
     "nombre": "Membrilla FS Juvenil",
     "escudo": "assets/rivales/membrilla.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "MEMBRILLA"
   },
   {
     "nombre": "Miguelturra FS Juvenil",
     "escudo": "assets/rivales/miguelturra.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "MIGUELTURRA"
   },
   {
     "nombre": "Moral FS Juvenil",
     "escudo": "assets/rivales/moral.png",
-    "categoria": "juvenil"
+    "categoria": "juvenil",
+    "clave": "MORAL"
   }
 ]

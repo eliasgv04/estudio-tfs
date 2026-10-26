@@ -334,6 +334,11 @@ a.boton { display: block; text-align: center; text-decoration: none; }
 .boton-archivo:hover { border-color: var(--amarillo); color: var(--amarillo); }
 .boton-archivo input { display: none; }
 
+/* Rellenar con la FFCM */
+.ffcm { display: grid; gap: 6px; }
+.ffcm .boton { padding: 12px; font-size: 13px; }
+.ffcm .nota { min-height: 1em; }
+
 /* Texto de la publicación */
 .texto-publicacion textarea {
   font: inherit;

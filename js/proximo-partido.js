@@ -108,3 +108,12 @@ Textos.iniciar(() => {
     [estado.enCasa ? "¡Os esperamos en el pabellón! 💛💚" : "¡A por los tres puntos! 💛💚"],
   );
 });
+
+// Próximo partido según la FFCM.
+Ffcm.iniciar((d) => {
+  if (!d.proxima) Ffcm.falta();
+  const p = Ffcm.nuestroPartido(d.proxima);
+  if (!p) return `Jornada ${d.proxima.n}: esta jornada descansamos`;
+  Estudio.ponerPartido(p);
+  return `Jornada ${d.proxima.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival}`;
+});

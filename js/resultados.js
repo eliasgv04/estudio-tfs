@@ -251,3 +251,36 @@ Textos.iniciar(() => {
     lineas,
   );
 });
+
+// Partidos de la última jornada según la FFCM (los goles se ponen a mano: la FFCM no deja leerlos).
+Ffcm.iniciar((d) => {
+  if (!d.ultima) Ffcm.falta();
+  const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
+  const partidos = d.ultima.partidos;
+  const jornada = document.getElementById("jornada");
+  jornada.value = d.ultima.n;
+  disparar(jornada, "input");
+  const num = document.getElementById("num-partidos");
+  num.value = Math.min(MAX_PARTIDOS, partidos.length) || MAX_PARTIDOS;
+  disparar(num, "input");
+
+  document.querySelectorAll(".partido").forEach((bloque, i) => {
+    const p = partidos[i];
+    if (!p) return;
+    bloque.querySelectorAll(".equipo-partido").forEach((caja, k) => {
+      const [, sel, goles, nombre] = caja.children;
+      const ffcm = k === 0 ? p.local : p.visitante;
+      const r = Ffcm.esNuestro(ffcm) ? null : Ffcm.rival(ffcm);
+      sel.value = r ? r.escudo : NUESTRO;
+      disparar(sel, "change");
+      if (r && !r.escudo) {
+        nombre.value = r.nombre;
+        disparar(nombre, "input");
+      }
+      goles.value = "";
+      disparar(goles, "input");
+    });
+  });
+  const descansa = d.ultima.descansa ? ` · descansa ${Ffcm.rival(d.ultima.descansa).nombre}` : "";
+  return `Jornada ${d.ultima.n}: ${partidos.length} partidos${descansa} (pon los goles)`;
+});

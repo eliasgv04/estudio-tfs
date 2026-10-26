@@ -425,6 +425,24 @@ const Estudio = (() => {
     },
   };
 
+  // Pone un partido entero (p. ej. el que viene de la FFCM):
+  // { rival, escudo, enCasa, fecha, hora, pabellon }.
+  // Fuera, si ya habías escrito a mano el pabellón de ese rival se respeta el tuyo.
+  function ponerPartido(p) {
+    estado.rival = p.rival;
+    estado.enCasa = p.enCasa;
+    if (p.fecha) estado.fecha = p.fecha;
+    if (p.hora) estado.hora = p.hora;
+    for (const k of ["rival", "fecha", "hora"]) ponerValor(k, k);
+    marcarCampo();
+    if (!p.enCasa && p.pabellon && !Pabellones.leer(p.rival)) Pabellones.guardar(p.rival, p.pabellon);
+    ponerPabellon();
+    const sel = $("escudo-rival");
+    if (sel) sel.value = p.escudo || "";
+    ponerEscudoRival(p.escudo || null);
+    refrescar();
+  }
+
   // En casa el pabellón es siempre el nuestro y el campo queda bloqueado.
   function ponerPabellon() {
     estado.pabellon = estado.enCasa ? PABELLON_CASA : Pabellones.leer(estado.rival);
@@ -588,6 +606,10 @@ const Estudio = (() => {
     }
   }
 
+  // Se resuelve cuando la página ya tiene cargados rivales, escudos y plantillas.
+  let resolverListo;
+  const listo = new Promise((r) => (resolverListo = r));
+
   async function iniciar(opciones) {
     config = opciones;
     vista = $("vista");
@@ -617,10 +639,12 @@ const Estudio = (() => {
     if (opciones.alCargar) await opciones.alCargar();
     enlazarEscudos();
     refrescar();
+    resolverListo();
   }
 
   return {
-    FORMATOS, MARCO_STORY, estado, recursos, iniciar, refrescar, alCambiar, enlazar, caja, bajadaStory,
+    FORMATOS, MARCO_STORY, estado, recursos, iniciar, listo, refrescar, alCambiar, enlazar, caja, bajadaStory,
+    ponerPartido,
     equiposEnOrden, textoAjustado, dibujarEnCaja, pintarEscudos, fechaLarga, horaTexto,
     FUTURA, FUTURA_CONDENSADA, FUTURA_CONDENSADA_MEDIA, PLAYFAIR, PLAYFAIR_CURSIVA, ANTON,
     EQUIPOS, EQUIPOS_CORTOS, NUESTRO,
