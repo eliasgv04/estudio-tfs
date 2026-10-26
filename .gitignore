@@ -1,0 +1,5 @@
+# Configuración y claves locales de Vercel: nunca al repositorio
+.vercel
+.env*
+
+node_modules/

@@ -1,0 +1,451 @@
+/* Estudio Torrenueva: misma identidad que los posts del club.
+   Fondo casi negro con un punto verde, acentos en el amarillo y el verde de la
+   equipación, líneas blancas finas como las del cuadro de las plantillas y títulos
+   que mezclan Anton con Playfair cursiva ("final / PARTIDO"). */
+
+:root {
+  --fondo: #0b100c;
+  --panel: #131a15;
+  --panel-2: #18211a;
+  --borde: #26322a;
+  --linea: rgba(255, 255, 255, 0.14);
+  --texto: #f2f4ee;
+  --suave: #97a69a;
+  --amarillo: #f4c51d;
+  --verde: #1f8a45;
+  --acento: var(--amarillo);
+  --sobre-acento: #111;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--fondo); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(31, 138, 69, 0.22), transparent 70%),
+    var(--fondo);
+  color: var(--texto);
+  font-family: "Futura Club", system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Las dos líneas verticales del cuadro de las plantillas, de fondo en toda la web. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 max(10px, calc(50% - 600px));
+  border-left: 1px solid var(--linea);
+  border-right: 1px solid var(--linea);
+  pointer-events: none;
+}
+
+main {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 22px 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+@media (min-width: 860px) {
+  main { grid-template-columns: 1fr 360px; align-items: start; }
+  main > .cabecera { grid-column: 1 / -1; }
+  main > section { position: sticky; top: 16px; }
+}
+
+/* ---------- Títulos con la tipografía de los posts ---------- */
+
+.titulo-mixto { margin: 0; font-weight: 400; line-height: 0.9; }
+.titulo-mixto em {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.62em;
+  letter-spacing: 0;
+  margin-left: -0.08em;
+}
+.titulo-mixto b {
+  display: block;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.titulo-mixto.en-linea em,
+.titulo-mixto.en-linea b { display: inline; }
+.titulo-mixto.en-linea em { font-size: 1em; margin-left: 0.02em; }
+
+/* ---------- Cabecera de las plantillas: escudo + título ---------- */
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--linea);
+}
+.cabecera .titulo-mixto { font-size: 46px; }
+.volver {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  flex: none;
+  color: var(--suave);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.volver img { width: 46px; height: 46px; object-fit: contain; }
+.volver:hover { color: var(--texto); }
+.cabecera .formato { margin-left: auto; min-width: 170px; }
+@media (max-width: 560px) {
+  .cabecera { flex-wrap: wrap; }
+  .cabecera .titulo-mixto { font-size: 40px; }
+  .cabecera .formato { margin-left: 0; width: 100%; }
+}
+
+/* ---------- Vista previa ---------- */
+
+.vista-envoltura { position: relative; }
+/* El lienzo guarda su proporción (cuadrado o 9:16) y no pasa del alto de pantalla. */
+#vista {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  margin: 0 auto;
+  touch-action: none;
+  cursor: grab;
+  background: var(--panel);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35), 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.pista { color: var(--suave); font-size: 13px; margin: 10px 0 0; text-align: center; }
+
+/* ---------- Formulario ---------- */
+
+form { display: grid; gap: 14px; }
+/* Sin esto, fieldset y celdas de grid no encogen por debajo de su contenido
+   y la página se sale por la derecha en el móvil. */
+main > *, fieldset, select { min-width: 0; }
+
+fieldset {
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 14px;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  background: var(--panel);
+}
+legend,
+.plegable summary {
+  font-family: "Futura Condensada Media", "Anton", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amarillo);
+  padding: 0 6px;
+}
+label { display: grid; gap: 5px; font-size: 14px; }
+
+input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
+  font: inherit;
+  font-size: 16px; /* evita el zoom automático de iPhone */
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  color: var(--texto);
+  width: 100%;
+}
+input:focus, select:focus { outline: none; border-color: var(--amarillo); }
+input:disabled { opacity: 0.6; }
+input[type="range"] { width: 100%; accent-color: var(--amarillo); }
+
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* Grupos de opciones (sénior/juvenil, casa/fuera…) como píldoras. */
+.opciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: var(--fondo);
+  cursor: pointer;
+}
+.opciones input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.opciones label:has(input:checked) { border-color: var(--amarillo); color: var(--amarillo); }
+.opciones label:has(input:focus-visible) { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Selector Post / Story: dos botones pegados */
+.formato {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.formato label { display: block; cursor: pointer; }
+.formato input { position: absolute; opacity: 0; pointer-events: none; }
+.formato span {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--suave);
+  background: var(--fondo);
+}
+.formato input:checked + span { background: var(--amarillo); color: var(--sobre-acento); }
+.formato input:focus-visible + span { outline: 2px solid #fff; outline-offset: -4px; }
+
+.arrastrar { justify-content: center; align-items: center; margin-top: 10px; }
+.arrastrar .pista { margin: 0; }
+.enlace {
+  font: inherit;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--suave);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Clasificación: filas del formulario */
+.filas-tabla { display: grid; gap: 8px; }
+.fila-tabla {
+  display: grid;
+  grid-template-columns: 34px 1fr 64px;
+  grid-template-areas: "num equipo puntos" "num nombre puntos";
+  gap: 6px 8px;
+  align-items: center;
+}
+.fila-tabla .num {
+  grid-area: num;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: var(--amarillo);
+}
+.fila-tabla select { grid-area: equipo; }
+.fila-tabla input[type="text"] { grid-area: nombre; }
+.fila-tabla input[type="number"] { grid-area: puntos; align-self: stretch; text-align: center; }
+
+/* Resultados: pestañas de partidos + un solo partido a la vista */
+.pestanas { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.pestana {
+  font: inherit;
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  padding: 8px 0 6px;
+  border-radius: 4px;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  color: var(--texto);
+  cursor: pointer;
+  position: relative;
+}
+.pestana b { font-family: "Playfair Display", serif; font-size: 18px; font-weight: 400; }
+.pestana small { font-size: 11px; color: var(--suave); }
+.pestana.activa { background: var(--amarillo); border-color: var(--amarillo); color: var(--sobre-acento); }
+.pestana.activa small { color: var(--sobre-acento); }
+.pestana.nuestro::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--verde);
+  box-shadow: 0 0 0 1px #fff;
+}
+.cabecera-partido { display: flex; align-items: center; justify-content: space-between; }
+.cabecera-partido span { font-weight: 700; }
+.flecha {
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  width: 40px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  color: var(--texto);
+  cursor: pointer;
+}
+.flecha:disabled { opacity: 0.3; }
+.partido { display: grid; gap: 8px; }
+.equipo-partido { display: grid; grid-template-columns: 70px 1fr 56px; gap: 6px; align-items: center; }
+.equipo-partido .lado { color: var(--suave); font-size: 13px; }
+.equipo-partido input[type="number"] { text-align: center; padding: 10px 4px; }
+.equipo-partido input[type="text"] { grid-column: 2 / -1; }
+
+.plegable {
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 14px;
+  background: var(--panel);
+}
+.plegable summary { cursor: pointer; padding: 0; }
+.plegable[open] { display: grid; gap: 12px; }
+[hidden] { display: none !important; }
+
+/* ---------- Botones ---------- */
+
+.boton {
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--amarillo);
+  color: var(--sobre-acento);
+  cursor: pointer;
+}
+.boton:hover { filter: brightness(1.06); }
+.boton:disabled { opacity: 0.6; }
+a.boton { display: block; text-align: center; text-decoration: none; }
+.boton-archivo {
+  display: block;
+  text-align: center;
+  background: transparent;
+  color: var(--texto);
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 15px;
+}
+.boton-archivo:hover { border-color: var(--amarillo); color: var(--amarillo); }
+.boton-archivo input { display: none; }
+
+/* Texto de la publicación */
+.texto-publicacion textarea {
+  font: inherit;
+  font-size: 16px; /* evita el zoom automático de iPhone */
+  line-height: 1.45;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  color: var(--texto);
+  width: 100%;
+  resize: vertical;
+}
+.texto-publicacion textarea:focus { outline: none; border-color: var(--amarillo); }
+.texto-publicacion .boton { padding: 12px; font-size: 13px; }
+.boton-secundario { background: transparent; color: var(--texto); border: 1px solid var(--borde); }
+.nota { margin: 0; color: var(--suave); font-size: 12px; }
+
+/* ---------- Inicio ---------- */
+
+main.inicio { max-width: 980px; grid-template-columns: minmax(0, 1fr); gap: 34px; }
+
+.portada {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 26px 0 30px;
+  border-bottom: 1px solid var(--linea);
+  position: relative;
+}
+/* La línea horizontal del cuadro, cruzando de lado a lado como en las plantillas. */
+.portada::before {
+  content: "";
+  position: absolute;
+  left: -100vw;
+  right: -100vw;
+  bottom: -1px;
+  border-bottom: 1px solid var(--linea);
+}
+.portada img { width: 108px; height: 108px; object-fit: contain; filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5)); }
+.portada .titulo-mixto { font-size: clamp(54px, 13vw, 104px); }
+.portada .titulo-mixto em { font-size: 0.5em; color: var(--amarillo); margin-left: 0; }
+.portada p { margin: 0; color: var(--suave); font-size: 15px; letter-spacing: 0.04em; }
+
+.grupo { display: grid; gap: 16px; }
+.grupo > h2 {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 400;
+  font-family: "Anton", sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+}
+.grupo > h2 em {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.8em;
+  color: var(--amarillo);
+}
+.grupo > h2 small {
+  font-family: "Futura Club", sans-serif;
+  font-size: 13px;
+  color: var(--suave);
+  letter-spacing: 0.04em;
+}
+
+.plantillas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 22px 18px;
+}
+@media (min-width: 700px) { .plantillas { grid-template-columns: repeat(3, 1fr); } }
+
+.tarjeta { display: grid; gap: 12px; color: inherit; text-decoration: none; }
+/* Miniatura enmarcada con líneas que sobresalen, como el cuadro de los posts. */
+.tarjeta .mini { position: relative; padding: 9px; }
+.tarjeta .mini::before,
+.tarjeta .mini::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  transition: border-color 0.2s;
+}
+.tarjeta .mini::before { inset: 9px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+.tarjeta .mini::after { inset: 0 9px; border-left: 1px solid var(--linea); border-right: 1px solid var(--linea); }
+.tarjeta img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 0.25s;
+}
+.tarjeta:hover img { transform: scale(1.02); }
+.tarjeta:hover .mini::before,
+.tarjeta:hover .mini::after { border-color: var(--amarillo); }
+.tarjeta .titulo-mixto { font-size: 30px; padding: 0 9px; }
+.tarjeta .titulo-mixto em { font-size: 0.6em; }
+.tarjeta .titulo-mixto.en-linea em { font-size: 1em; }
+.tarjeta p { margin: -4px 0 0; padding: 0 9px; color: var(--suave); font-size: 13px; line-height: 1.4; }
+
+.pie {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding-top: 26px;
+  border-top: 1px solid var(--linea);
+  color: var(--suave);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.pie img { width: min(100%, 720px); height: auto; opacity: 0.85; }

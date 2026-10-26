@@ -1,0 +1,83 @@
+/* Fuentes del club, servidas en local para que la app funcione sin conexión.
+   - Anton: titulares
+   - Playfair Display: toques elegantes (serif)
+   - Futura: datos. Primero la del sistema (iPhone/Mac la traen); si existe
+     assets/fuentes/futura.woff2 se usa ese archivo; si no, Jost (clon libre). */
+
+@font-face {
+  font-family: "Anton";
+  src: url("../assets/fuentes/anton-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fuentes/playfair-display-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fuentes/playfair-display-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fuentes/playfair-display-latin-900-normal.woff2") format("woff2");
+  font-weight: 900;
+  font-display: block;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fuentes/playfair-display-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../assets/fuentes/playfair-display-latin-700-italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Futura Club";
+  src: local("Futura"), local("Futura-Medium"), local("Futura Medium"),
+       url("../assets/fuentes/futura.woff2") format("woff2"),
+       url("../assets/fuentes/jost-latin-500-normal.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: block;
+}
+/* Futura Condensed ExtraBold (fecha, hora y pabellón). Viene en iPhone/Mac;
+   en Windows se ve con Anton como aproximación. */
+@font-face {
+  font-family: "Futura Condensada";
+  src: local("Futura-CondensedExtraBold"), local("Futura Condensed ExtraBold"),
+       url("../assets/fuentes/futura-condensed-extrabold.woff2") format("woff2"),
+       url("../assets/fuentes/anton-latin-400-normal.woff2") format("woff2");
+  font-weight: 800;
+  font-display: block;
+}
+
+/* Futura Condensed Medium (hora y pabellón del matchday). */
+@font-face {
+  font-family: "Futura Condensada Media";
+  src: local("Futura-CondensedMedium"), local("Futura Condensed Medium"),
+       url("../assets/fuentes/futura-condensed-medium.woff2") format("woff2"),
+       url("../assets/fuentes/anton-latin-400-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Futura Club";
+  src: local("Futura-Bold"), local("Futura Bold"),
+       url("../assets/fuentes/futura-bold.woff2") format("woff2"),
+       url("../assets/fuentes/jost-latin-700-normal.woff2") format("woff2");
+  font-weight: 600 900;
+  font-display: block;
+}

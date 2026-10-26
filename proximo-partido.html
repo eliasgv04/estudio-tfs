@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#0b100c">
+  <link rel="icon" href="assets/club/favicon.png">
+  <link rel="apple-touch-icon" href="assets/club/icono-180.png">
+  <title>Próximo partido</title>
+  <link rel="stylesheet" href="css/fuentes.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main>
+    <header class="cabecera">
+      <a href="./" class="volver"><img src="assets/club/escudo-blanco.png" alt=""><span>Inicio</span></a>
+      <h1 class="titulo-mixto"><em>próximo</em><b>PARTIDO</b></h1>
+      <div class="formato" role="radiogroup" aria-label="Formato">
+        <label><input type="radio" name="formato" value="post"><span>Post</span></label>
+        <label><input type="radio" name="formato" value="story"><span>Story</span></label>
+      </div>
+    </header>
+    <section>
+      <div class="vista-envoltura">
+        <canvas id="vista" width="1024" height="1024"></canvas>
+      </div>
+      <div class="opciones arrastrar">
+        <span class="pista">Al arrastrar mueves:</span>
+        <label><input type="radio" name="arrastrar" value="foto"> Foto</label>
+        <label><input type="radio" name="arrastrar" value="bloque"> Textos</label>
+        <button type="button" class="enlace" id="recolocar">Recolocar textos</button>
+      </div>
+    </section>
+
+    <form onsubmit="return false">
+
+      <label class="boton boton-archivo">
+        Elegir foto
+        <input type="file" id="foto" accept="image/*">
+      </label>
+
+      <fieldset>
+        <legend>Partido</legend>
+        <div class="opciones">
+          <label><input type="radio" name="equipo" value="senior"> Sénior</label>
+          <label><input type="radio" name="equipo" value="juvenil"> Juvenil</label>
+        </div>
+        <div class="opciones">
+          <label><input type="radio" name="campo" value="casa"> En casa (local)</label>
+          <label><input type="radio" name="campo" value="fuera"> Fuera (visitante)</label>
+        </div>
+        <label>Rival
+          <input type="text" id="rival" placeholder="Piedrabuena FS" autocomplete="off">
+        </label>
+        <label>Elegir rival (pone nombre y escudo)
+          <select id="escudo-rival"><option value="">— Otro / sin escudo —</option></select>
+        </label>
+        <label class="boton boton-archivo">
+          Subir otro escudo (PNG en blanco)
+          <input type="file" id="subir-escudo" accept="image/png">
+        </label>
+        <div class="fila">
+          <label>Fecha
+            <input type="date" id="fecha">
+          </label>
+          <label>Hora
+            <input type="time" id="hora">
+          </label>
+        </div>
+        <label>Pabellón
+          <input type="text" id="pabellon" autocomplete="off">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Foto</legend>
+        <label>Zoom
+          <input type="range" id="zoom" min="1" max="3" step="0.01">
+        </label>
+        <label>Desenfoque del borde
+          <input type="range" id="desenfoque" min="0" max="40" step="1">
+        </label>
+        <label>Brillo del borde
+          <input type="range" id="brillo" min="-100" max="0" step="1">
+        </label>
+      </fieldset>
+
+      <button type="button" class="boton" id="exportar">Guardar imagen</button>
+    </form>
+  </main>
+
+  <script src="js/lienzo.js"></script>
+  <script src="js/estudio.js"></script>
+  <script src="js/textos.js"></script>
+  <script src="js/proximo-partido.js"></script>
+</body>
+</html>

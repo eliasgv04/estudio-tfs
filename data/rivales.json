@@ -1,0 +1,117 @@
+[
+  {
+    "nombre": "CD Ciudad de Puertollano",
+    "escudo": "assets/rivales/ciudaddepuertollano.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "CD San Carlos FS",
+    "escudo": "assets/rivales/sancarlos.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Carrión FS",
+    "escudo": "assets/rivales/carrion.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Chillón FS",
+    "escudo": "assets/rivales/chillon.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Corraleño FS",
+    "escudo": "assets/rivales/corraleno.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Daimiel FS B",
+    "escudo": "assets/rivales/daimiel.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "FS Renacer Argamasilla",
+    "escudo": "assets/rivales/argamasilla.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Moral FS B",
+    "escudo": "assets/rivales/moral.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Piedrabuena FS",
+    "escudo": "assets/rivales/piedrabuena.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Porzuna FS",
+    "escudo": "assets/rivales/porzuna.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Puertollano FS",
+    "escudo": "assets/rivales/puertollano.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Salesianos Ciudad Real",
+    "escudo": "assets/rivales/salesianos.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Torralbeño FS",
+    "escudo": "assets/rivales/torralba.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "Villarrubia FS",
+    "escudo": "assets/rivales/villarrubia.png",
+    "categoria": "senior"
+  },
+  {
+    "nombre": "CD Ciudad de Puertollano Juvenil",
+    "escudo": "assets/rivales/ciudaddepuertollano.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Carrión FS Juvenil",
+    "escudo": "assets/rivales/carrion.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Corraleño FS Juvenil",
+    "escudo": "assets/rivales/corraleno.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Daimiel FS Juvenil",
+    "escudo": "assets/rivales/daimiel.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "FS La Solana Juvenil",
+    "escudo": "assets/rivales/lasolana.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Manzanares FS Juvenil",
+    "escudo": "assets/rivales/manzanares.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Membrilla FS Juvenil",
+    "escudo": "assets/rivales/membrilla.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Miguelturra FS Juvenil",
+    "escudo": "assets/rivales/miguelturra.png",
+    "categoria": "juvenil"
+  },
+  {
+    "nombre": "Moral FS Juvenil",
+    "escudo": "assets/rivales/moral.png",
+    "categoria": "juvenil"
+  }
+]

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#0b100c">
+  <link rel="icon" href="assets/club/favicon.png">
+  <link rel="apple-touch-icon" href="assets/club/icono-180.png">
+  <title>Clasificación</title>
+  <link rel="stylesheet" href="css/fuentes.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main>
+    <header class="cabecera">
+      <a href="./" class="volver"><img src="assets/club/escudo-blanco.png" alt=""><span>Inicio</span></a>
+      <h1 class="titulo-mixto"><em>clasificación</em><b>JORNADA</b></h1>
+      <div class="formato" role="radiogroup" aria-label="Formato">
+        <label><input type="radio" name="formato" value="post"><span>Post</span></label>
+        <label><input type="radio" name="formato" value="story"><span>Story</span></label>
+      </div>
+    </header>
+    <section>
+      <div class="vista-envoltura">
+        <canvas id="vista" width="1024" height="1024"></canvas>
+      </div>
+      <p class="pista">Arrastra sobre la imagen para encuadrar la foto.</p>
+    </section>
+
+    <form onsubmit="return false">
+
+      <label class="boton boton-archivo">
+        Elegir foto
+        <input type="file" id="foto" accept="image/*">
+      </label>
+
+      <fieldset>
+        <legend>Tabla</legend>
+        <div class="opciones">
+          <label><input type="radio" name="equipo" value="senior"> Sénior</label>
+          <label><input type="radio" name="equipo" value="juvenil"> Juvenil</label>
+        </div>
+        <div class="fila">
+          <label>Jornada
+            <input type="number" id="jornada" inputmode="numeric" min="1">
+          </label>
+          <label>Posición del primero
+            <input type="number" id="primera-posicion" inputmode="numeric" min="1">
+          </label>
+        </div>
+        <div id="filas" class="filas-tabla"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Foto</legend>
+        <label>Zoom
+          <input type="range" id="zoom" min="1" max="3" step="0.01">
+        </label>
+        <label>Oscurecer detrás de la tabla
+          <input type="range" id="velo" min="0" max="0.9" step="0.01">
+        </label>
+        <label>Desenfoque del borde
+          <input type="range" id="desenfoque" min="0" max="40" step="1">
+        </label>
+        <label>Brillo del borde
+          <input type="range" id="brillo" min="-100" max="0" step="1">
+        </label>
+      </fieldset>
+
+      <button type="button" class="boton" id="exportar">Guardar imagen</button>
+    </form>
+  </main>
+
+  <script src="js/lienzo.js"></script>
+  <script src="js/estudio.js"></script>
+  <script src="js/textos.js"></script>
+  <script src="js/clasificacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Fotos de ejemplo y originales: solo para trabajar en local, no se publican
+referencias/
+assets/iconos/*.JPG
+
+# Claves de Vercel: nunca se publican
+.env*
