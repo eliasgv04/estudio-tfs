@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-26T14:47:33.396Z",
+ "actualizado": "2026-10-26T14:52:39.029Z",
  "jornadas": [
   {
    "n": 1,
@@ -253,49 +253,77 @@
      "visitante": "C.D. F.S. CHILLON",
      "fecha": "2026-10-24",
      "hora": "17:00",
-     "campo": "P.M. DE MORAL DE CALATRAVA"
+     "campo": "P.M. DE MORAL DE CALATRAVA",
+     "goles": [
+      5,
+      3
+     ]
     },
     {
      "local": "FUTBOL SALA RENACER ARGAMASILLA",
      "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
      "fecha": "2026-10-24",
      "hora": "17:00",
-     "campo": "P.M. DE ARGAMASILLA DE ALBA"
+     "campo": "P.M. DE ARGAMASILLA DE ALBA",
+     "goles": [
+      3,
+      0
+     ]
     },
     {
      "local": "VILLARRUBIA FS",
      "visitante": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
      "fecha": "2026-10-24",
      "hora": "18:00",
-     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
+     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS",
+     "goles": [
+      15,
+      0
+     ]
     },
     {
      "local": "FUTSAL CORRALEÑO",
      "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
      "fecha": "2026-10-24",
      "hora": "19:00",
-     "campo": "PABELLON JUAN DE DIOS ROMAN"
+     "campo": "PABELLON JUAN DE DIOS ROMAN",
+     "goles": [
+      4,
+      6
+     ]
     },
     {
      "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
      "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
      "fecha": "2026-10-24",
      "hora": "19:10",
-     "campo": "P.M. DE TORRENUEVA"
+     "campo": "P.M. DE TORRENUEVA",
+     "goles": [
+      4,
+      2
+     ]
     },
     {
      "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
      "visitante": "C.D. SAN CARLOS DEL VALLE",
      "fecha": "2026-10-24",
      "hora": "19:30",
-     "campo": "P.M. ANTONIO RIVILLA"
+     "campo": "P.M. ANTONIO RIVILLA",
+     "goles": [
+      5,
+      1
+     ]
     },
     {
      "local": "F.S. PORZUNA",
      "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
      "fecha": "2026-10-24",
      "hora": "20:00",
-     "campo": "P.M. DE PORZUNA"
+     "campo": "P.M. DE PORZUNA",
+     "goles": [
+      4,
+      5
+     ]
     }
    ]
   },

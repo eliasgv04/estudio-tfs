@@ -2,8 +2,13 @@
    para que las plantillas se rellenen solas. Lo ejecuta la GitHub Action de los lunes.
 
    Se leen: fechas de cada jornada, clasificación y, de la última y las próximas jornadas,
-   los partidos con equipos, fecha, hora y pabellón. Los marcadores NO se leen: la FFCM los
-   camufla a propósito para que no se extraigan de forma automática; se ponen a mano.
+   los partidos con equipos, fecha, hora y pabellón.
+
+   Los marcadores de los partidos NO se leen: la FFCM los camufla a propósito para que no se
+   extraigan de forma automática. Lo que sí publica sin camuflar es la clasificación de cada
+   jornada con los goles a favor y en contra de cada equipo, así que el resultado de un
+   partido ya jugado se calcula restando la clasificación de esa jornada menos la de la
+   anterior (y se comprueba que cuadre por los dos lados).
 
    Uso: node herramientas/ffcm.mjs */
 
@@ -103,12 +108,43 @@ function leerJornada(html) {
   return { descansa, partidos };
 }
 
+/* Resultado de cada partido de la jornada n a partir de la clasificación tras la jornada n
+   y tras la n-1: los goles de cada equipo son lo que han subido sus goles a favor. Solo se
+   da por bueno si cuadra por los dos lados (lo que marca uno es lo que encaja el otro) y
+   los dos equipos suman exactamente un partido jugado; si no (aplazado, sanción…), null. */
+function calcularResultados(partidos, antes, despues) {
+  const indice = (tabla) => new Map(tabla.map((f) => [f.equipo, f]));
+  const [a, d] = [indice(antes), indice(despues)];
+  const cero = { gf: 0, gc: 0, pj: 0 };
+  for (const p of partidos) {
+    const [la, ld] = [a.get(p.local) || cero, d.get(p.local)];
+    const [va, vd] = [a.get(p.visitante) || cero, d.get(p.visitante)];
+    p.goles = null;
+    if (!ld || !vd) continue;
+    const local = ld.gf - la.gf;
+    const visitante = vd.gf - va.gf;
+    const cuadra =
+      ld.gc - la.gc === visitante && vd.gc - va.gc === local && ld.pj - la.pj === 1 && vd.pj - va.pj === 1;
+    if (cuadra) p.goles = [local, visitante];
+  }
+}
+
 async function leerGrupo(g) {
   const comun = `cod_primaria=1000120&codtemporada=${g.temporada}&codcompeticion=${g.competicion}&codgrupo=${g.grupo}`;
+  const urlClasificacion = (n) =>
+    `NFG_VisClasificacion?cod_primaria=1000120&codgrupo=${g.grupo}&codcompeticion=${g.competicion}` +
+    (n ? `&codjornada=${n}` : "");
   const cal = await pagina(`NFG_VisCalendario_Vis?${comun}`);
-  const clas = await pagina(`NFG_VisClasificacion?cod_primaria=1000120&codgrupo=${g.grupo}&codcompeticion=${g.competicion}`);
+  const clas = await pagina(urlClasificacion());
   const jornadas = leerCalendario(cal);
   if (!jornadas.length) throw new Error("La FFCM ha devuelto el calendario vacío");
+
+  // Clasificación tras cada jornada (la 0 es todo a cero), pedida una sola vez cada una.
+  const clasificaciones = new Map([[0, []]]);
+  const clasificacionTras = async (n) => {
+    if (!clasificaciones.has(n)) clasificaciones.set(n, leerClasificacion(await pagina(urlClasificacion(n))));
+    return clasificaciones.get(n);
+  };
 
   // Partidos de la última jornada ya llegada y de las dos siguientes: así sirven toda la
   // semana aunque la Action no vuelva a ejecutarse hasta el lunes siguiente.
@@ -120,6 +156,10 @@ async function leerGrupo(g) {
     partidos[j.n] = leerJornada(
       await pagina(`NFG_CmpJornada?cod_primaria=1000120&CodCompeticion=${g.competicion}&CodGrupo=${g.grupo}&CodTemporada=${g.temporada}&CodJornada=${j.n}`),
     );
+    // Resultados solo de jornadas ya pasadas (el día de partido aún no están).
+    if (j.fecha < hoy) {
+      calcularResultados(partidos[j.n].partidos, await clasificacionTras(j.n - 1), await clasificacionTras(j.n));
+    }
   }
   return { actualizado: new Date().toISOString(), jornadas, clasificacion: leerClasificacion(clas), partidos };
 }

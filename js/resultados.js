@@ -252,7 +252,8 @@ Textos.iniciar(() => {
   );
 });
 
-// Partidos de la última jornada según la FFCM (los goles se ponen a mano: la FFCM no deja leerlos).
+// Partidos de la última jornada según la FFCM, con los goles calculados a partir de la
+// clasificación (herramientas/ffcm.mjs). Si alguno no cuadra, queda vacío para ponerlo a mano.
 Ffcm.iniciar((d) => {
   if (!d.ultima) Ffcm.falta();
   const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
@@ -277,10 +278,12 @@ Ffcm.iniciar((d) => {
         nombre.value = r.nombre;
         disparar(nombre, "input");
       }
-      goles.value = "";
+      goles.value = p.goles ? p.goles[k] : "";
       disparar(goles, "input");
     });
   });
   const descansa = d.ultima.descansa ? ` · descansa ${Ffcm.rival(d.ultima.descansa).nombre}` : "";
-  return `Jornada ${d.ultima.n}: ${partidos.length} partidos${descansa} (pon los goles)`;
+  const sinGoles = partidos.filter((p) => !p.goles).length;
+  const aviso = sinGoles ? ` (${sinGoles} sin resultado: ponlo a mano)` : "";
+  return `Jornada ${d.ultima.n}: ${partidos.length} partidos${descansa}${aviso}`;
 });

@@ -101,11 +101,20 @@ Textos.iniciar(() => {
   );
 });
 
-// Último partido según la FFCM (los goles se ponen a mano: la FFCM no deja leerlos).
+// Último partido según la FFCM, con el resultado calculado a partir de la clasificación
+// (herramientas/ffcm.mjs). El día del partido aún no está: los goles se ponen a mano.
 Ffcm.iniciar((d) => {
   if (!d.ultima) Ffcm.falta();
   const p = Ffcm.nuestroPartido(d.ultima);
   if (!p) return `Jornada ${d.ultima.n}: descansamos`;
   Estudio.ponerPartido(p);
-  return `Jornada ${d.ultima.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival} (pon los goles)`;
+  const partido = d.ultima.partidos.find((x) => Ffcm.esNuestro(x.local) || Ffcm.esNuestro(x.visitante));
+  const goles = partido?.goles ? (p.enCasa ? partido.goles : [...partido.goles].reverse()) : ["", ""];
+  for (const [id, clave, valor] of [["goles-nuestros", "golesNuestros", goles[0]], ["goles-rival", "golesRival", goles[1]]]) {
+    estado[clave] = String(valor);
+    document.getElementById(id).value = valor;
+  }
+  Estudio.refrescar();
+  const resultado = partido?.goles ? ` · ${partido.goles.join("-")}` : " (pon los goles)";
+  return `Jornada ${d.ultima.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival}${resultado}`;
 });
