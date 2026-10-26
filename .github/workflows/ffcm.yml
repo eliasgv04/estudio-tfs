@@ -1,0 +1,48 @@
+# Lee de la web de la FFCM calendario, horarios, pabellones y clasificación y los guarda
+# en data/ para que las plantillas se rellenen solas.
+# Se ejecuta los lunes por la mañana, a mano desde la pestaña Actions (también desde la
+# app de GitHub en el móvil) y cuando cambia el propio lector.
+name: Datos de la FFCM
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # lunes 06:00 UTC (7:00-8:00 en España)
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - herramientas/ffcm.mjs
+      - .github/workflows/ffcm.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ffcm
+  cancel-in-progress: false
+
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Leer la FFCM
+        run: node herramientas/ffcm.mjs 2>&1 | tee data/ffcm-registro.txt; exit ${PIPESTATUS[0]}
+
+      - name: Guardar los datos en el repositorio
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ffcm-*.json data/ffcm-registro.txt || true
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+          else
+            git commit -m "Datos de la FFCM ($(date -u +%Y-%m-%d))"
+            git push
+          fi
