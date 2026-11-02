@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-10-26T14:57:19.155Z",
+ "actualizado": "2026-11-02T14:35:00.711Z",
  "jornadas": [
   {
    "n": 1,
@@ -161,20 +161,6 @@
    "descansa": null,
    "partidos": [
     {
-     "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
-     "visitante": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "P.M. ANTONIO SERRANO"
-    },
-    {
-     "local": "MOLINA CARPINEROS MORAL FS",
-     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "P.M. DE MORAL DE CALATRAVA"
-    },
-    {
      "local": "FUTSAL CORRALEÑO",
      "visitante": "TRT TRAILER DAIMIEL FUTBOL SALA",
      "fecha": "2026-11-07",
@@ -194,6 +180,20 @@
      "fecha": "2026-11-07",
      "hora": "",
      "campo": "P.M. DE MIGUELTURRA"
+    },
+    {
+     "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
+     "visitante": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
+     "fecha": "2026-11-08",
+     "hora": "12:00",
+     "campo": "P.M. ANTONIO SERRANO"
+    },
+    {
+     "local": "MOLINA CARPINEROS MORAL FS",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-11-08",
+     "hora": "12:30",
+     "campo": "P.M. DE MORAL DE CALATRAVA"
     }
    ]
   },
