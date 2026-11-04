@@ -252,27 +252,16 @@ Textos.iniciar(() => {
   );
 });
 
-// Partidos de la última jornada según la FFCM, con los goles calculados a partir de la
-// clasificación (herramientas/ffcm.mjs). Si alguno no cuadra, queda vacío para ponerlo a mano.
+// Partidos de la última jornada según la FFCM (o, si aún no se ha jugado ninguna, de la
+// próxima), con los goles calculados a partir de la clasificación (herramientas/ffcm.mjs).
+// Los que aún no tienen resultado quedan vacíos (en la imagen, "VS").
 Ffcm.iniciar((d) => {
   const disparar = (el, ev) => el.dispatchEvent(new Event(ev));
-  if (!d.ultima) {
-    // Aún no hay jornadas jugadas en esta categoría: se vacía para que no se quede la otra.
-    const jornada = document.getElementById("jornada");
-    jornada.value = "";
-    disparar(jornada, "input");
-    document.querySelectorAll(".equipo-partido").forEach((caja) => {
-      const [, sel, goles] = caja.children;
-      sel.value = "";
-      disparar(sel, "change");
-      goles.value = "";
-      disparar(goles, "input");
-    });
-    Ffcm.falta(d);
-  }
-  const partidos = d.ultima.partidos;
+  const j = d.ultima || d.proxima;
+  if (!j) Ffcm.falta(d);
+  const partidos = j.partidos;
   const jornada = document.getElementById("jornada");
-  jornada.value = d.ultima.n;
+  jornada.value = j.n;
   disparar(jornada, "input");
   const num = document.getElementById("num-partidos");
   num.value = Math.min(MAX_PARTIDOS, partidos.length) || MAX_PARTIDOS;
@@ -295,8 +284,10 @@ Ffcm.iniciar((d) => {
       disparar(goles, "input");
     });
   });
-  const descansa = d.ultima.descansa ? ` · descansa ${Ffcm.rival(d.ultima.descansa).nombre}` : "";
+  const descansa = j.descansa ? ` · descansa ${Ffcm.rival(j.descansa).nombre}` : "";
   const sinGoles = partidos.filter((p) => !p.goles).length;
-  const aviso = sinGoles ? ` (${sinGoles} sin resultado: ponlo a mano)` : "";
-  return `Jornada ${d.ultima.n}: ${partidos.length} partidos${descansa}${aviso}`;
+  const aviso = !d.ultima
+    ? " (aún sin jugar)"
+    : sinGoles ? ` (${sinGoles} sin resultado: ponlo a mano)` : "";
+  return `Jornada ${j.n}: ${partidos.length} partidos${descansa}${aviso}`;
 });
