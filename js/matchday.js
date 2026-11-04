@@ -4,7 +4,8 @@
    alto y título, datos y escudos guardan su sitio respecto a ellas.
    Juvenil: una sola foto (del juvenil hay menos fotos), diseño propio con la misma
    identidad: foto a sangre con el borde desenfocado, velo oscuro desde abajo y, abajo y
-   centrado, los escudos con "vs", el título "MATCHday" y la hora y el pabellón. */
+   centrado, los escudos (juntos, como en el resto de carteles), el título "MATCHday" y la
+   hora y el pabellón. */
 
 const FONDO = "assets/plantillas/matchday.jpg";
 
@@ -21,7 +22,8 @@ const POST = {
   // "MATCHday": recortado del ejemplo (la cursiva de "day" no es ninguna de nuestras fuentes).
   titulo: { x: 247, y: 812 },
   // Hora y pabellón en una línea, centrada, en Futura Condensed Medium.
-  datos: { cx: 1053, base: 1261, altoMayus: 38, anchoMax: 1500 },
+  // Con un degradado oscuro suave detrás para que se lea sobre cualquier foto.
+  datos: { cx: 1053, base: 1261, altoMayus: 38, anchoMax: 1500, sombra: true },
   // Escudos en blanco sobre el corte entre la primera y la segunda foto.
   escudos: {
     cx: { local: 932, visitante: 1162 },
@@ -57,7 +59,7 @@ const STORY = {
   tiras: tirasStory,
   titulo: { ...POST.titulo, y: POST.titulo.y + BAJA_CENTRO },
   // Un poco a la izquierda para no chocar con la cola de la "y" de "day".
-  datos: { cx: 975, base: POST.datos.base + BAJA_CENTRO + 30, altoMayus: 52, anchoMax: 1440 },
+  datos: { cx: 975, base: POST.datos.base + BAJA_CENTRO + 30, altoMayus: 52, anchoMax: 1440, sombra: true },
   escudos: {
     cx: { local: 900, visitante: 1180 },
     abajo: POST.escudos.abajo + BAJA_ESCUDOS + 20,
@@ -76,12 +78,11 @@ const JUVENIL_POST = {
   // Degradado oscuro desde `desde` (transparente) hasta `hasta` (opacidad del deslizador).
   velo: { desde: 820, hasta: 1350 },
   escudos: {
-    cx: { local: CENTRO_X - 220, visitante: CENTRO_X + 220 },
+    cx: { local: CENTRO_X - 118, visitante: CENTRO_X + 118 },
     abajo: 1240,
     nuestro: { ancho: 280, alto: 276 },
     rival: { ancho: 245, alto: 260 },
   },
-  vs: { cx: CENTRO_X, base: 1150, alto: 64 },
   // "MATCHday" a escala (la imagen original mide 1563 x 460).
   titulo: { cx: CENTRO_X, y: 1285, escala: 0.85 },
   datos: { cx: CENTRO_X, base: 1792, altoMayus: 38, anchoMax: 1500 },
@@ -94,19 +95,18 @@ const JUVENIL_STORY = {
   liga: { x: 230, y: JUVENIL_POST.liga.y - 10, tam: 190 },
   velo: { desde: JUVENIL_POST.velo.desde + BAJA_ABAJO - 250, hasta: JUVENIL_POST.velo.hasta + BAJA_ABAJO },
   escudos: {
-    cx: { local: CENTRO_X - 255, visitante: CENTRO_X + 255 },
+    cx: { local: CENTRO_X - 142, visitante: CENTRO_X + 142 },
     abajo: JUVENIL_POST.escudos.abajo + BAJA_ABAJO - 70,
     nuestro: { ancho: 340, alto: 335 },
     rival: { ancho: 298, alto: 316 },
   },
-  vs: { cx: CENTRO_X, base: JUVENIL_POST.vs.base + BAJA_ABAJO - 95, alto: 80 },
   titulo: { cx: CENTRO_X, y: JUVENIL_POST.titulo.y + BAJA_ABAJO - 40, escala: 0.95 },
   datos: { cx: CENTRO_X, base: JUVENIL_POST.datos.base + BAJA_ABAJO, altoMayus: 52, anchoMax: 1500 },
 };
 
 const TITULO = "assets/plantillas/matchday-titulo.png";
 
-const { estado, FUTURA_CONDENSADA_MEDIA, PLAYFAIR_CURSIVA } = Estudio;
+const { estado, FUTURA_CONDENSADA_MEDIA } = Estudio;
 Object.assign(estado, { velo: 0.6 });
 
 let titulo = null;
@@ -115,7 +115,27 @@ function pintarDatos(ctx, d) {
   const texto = [Estudio.horaTexto(), estado.pabellon.trim().toUpperCase()].filter(Boolean).join(" ");
   ctx.textAlign = "center";
   const tam = Lienzo.tamParaAlto(ctx, FUTURA_CONDENSADA_MEDIA, "H", d.altoMayus);
+  if (d.sombra && texto) {
+    ctx.font = FUTURA_CONDENSADA_MEDIA(tam);
+    const ancho = Math.min(ctx.measureText(texto).width, d.anchoMax);
+    sombraOvalada(ctx, d.cx, d.base - d.altoMayus / 2, ancho / 2 + d.altoMayus * 2.5, d.altoMayus * 1.9);
+  }
   Estudio.textoAjustado(ctx, texto, FUTURA_CONDENSADA_MEDIA, tam, d.cx, d.base, d.anchoMax);
+}
+
+// Mancha oscura ovalada que se difumina hacia los bordes (centro cx, cy y radios rx, ry).
+function sombraOvalada(ctx, cx, cy, rx, ry) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(rx / ry, 1);
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, ry);
+  g.addColorStop(0, "rgba(0,0,0,0.6)");
+  g.addColorStop(0.55, "rgba(0,0,0,0.42)");
+  g.addColorStop(1, "rgba(0,0,0,0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(-ry, -ry, 2 * ry, 2 * ry);
+  ctx.restore();
+  ctx.fillStyle = "#fff";
 }
 
 function pintarJuvenil(ctx, D) {
@@ -129,9 +149,6 @@ function pintarJuvenil(ctx, D) {
   ctx.fillStyle = "#fff";
 
   Estudio.pintarEscudos(ctx, D.escudos);
-  ctx.textAlign = "center";
-  ctx.font = PLAYFAIR_CURSIVA(Lienzo.tamParaAlto(ctx, PLAYFAIR_CURSIVA, "v", D.vs.alto));
-  ctx.fillText("vs", D.vs.cx, D.vs.base);
 
   if (titulo) {
     const [w, h] = [titulo.naturalWidth * D.titulo.escala, titulo.naturalHeight * D.titulo.escala];
