@@ -1,6 +1,10 @@
-/* Plantilla MATCHDAY: tres fotos en franjas sobre el fondo de la plantilla.
-   Medidas tomadas de referencias/MATCHDAYEJEMPLO.JPG (post). En el story las tres franjas
-   reparten el cuadro alto y título, datos y escudos guardan su sitio respecto a ellas. */
+/* Plantilla MATCHDAY.
+   Sénior: tres fotos en franjas sobre el fondo de la plantilla. Medidas tomadas de
+   referencias/MATCHDAYEJEMPLO.JPG (post); en el story las tres franjas reparten el cuadro
+   alto y título, datos y escudos guardan su sitio respecto a ellas.
+   Juvenil: una sola foto (del juvenil hay menos fotos), diseño propio con la misma
+   identidad: foto a sangre con el borde desenfocado, velo oscuro desde abajo y, abajo y
+   centrado, los escudos con "vs", el título "MATCHday" y la hora y el pabellón. */
 
 const FONDO = "assets/plantillas/matchday.jpg";
 
@@ -62,9 +66,48 @@ const STORY = {
   },
 };
 
+/* ---------- Juvenil: una sola foto ---------- */
+
+// Todo el bloque va centrado y apoyado abajo; en el story baja con la línea de abajo.
+const CENTRO_X = 1021;
+const JUVENIL_POST = {
+  plantilla: "assets/plantillas/clasificacion.png", // solo líneas y patrocinadores
+  liga: { x: 240, y: 174, tam: 150 },
+  // Degradado oscuro desde `desde` (transparente) hasta `hasta` (opacidad del deslizador).
+  velo: { desde: 820, hasta: 1350 },
+  escudos: {
+    cx: { local: CENTRO_X - 220, visitante: CENTRO_X + 220 },
+    abajo: 1240,
+    nuestro: { ancho: 280, alto: 276 },
+    rival: { ancho: 245, alto: 260 },
+  },
+  vs: { cx: CENTRO_X, base: 1150, alto: 64 },
+  // "MATCHday" a escala (la imagen original mide 1563 x 460).
+  titulo: { cx: CENTRO_X, y: 1285, escala: 0.85 },
+  datos: { cx: CENTRO_X, base: 1792, altoMayus: 38, anchoMax: 1500 },
+};
+
+// Story: lo de abajo baja con la línea de abajo del cuadro y lo pequeño va más grande.
+const BAJA_ABAJO = Estudio.FORMATOS.story.caja.y1 - Estudio.FORMATOS.post.caja.y1;
+const JUVENIL_STORY = {
+  plantilla: Estudio.MARCO_STORY,
+  liga: { x: 230, y: JUVENIL_POST.liga.y - 10, tam: 190 },
+  velo: { desde: JUVENIL_POST.velo.desde + BAJA_ABAJO - 250, hasta: JUVENIL_POST.velo.hasta + BAJA_ABAJO },
+  escudos: {
+    cx: { local: CENTRO_X - 255, visitante: CENTRO_X + 255 },
+    abajo: JUVENIL_POST.escudos.abajo + BAJA_ABAJO - 70,
+    nuestro: { ancho: 340, alto: 335 },
+    rival: { ancho: 298, alto: 316 },
+  },
+  vs: { cx: CENTRO_X, base: JUVENIL_POST.vs.base + BAJA_ABAJO - 95, alto: 80 },
+  titulo: { cx: CENTRO_X, y: JUVENIL_POST.titulo.y + BAJA_ABAJO - 40, escala: 0.95 },
+  datos: { cx: CENTRO_X, base: JUVENIL_POST.datos.base + BAJA_ABAJO, altoMayus: 52, anchoMax: 1500 },
+};
+
 const TITULO = "assets/plantillas/matchday-titulo.png";
 
-const { estado, FUTURA_CONDENSADA_MEDIA } = Estudio;
+const { estado, FUTURA_CONDENSADA_MEDIA, PLAYFAIR_CURSIVA } = Estudio;
+Object.assign(estado, { velo: 0.6 });
 
 let titulo = null;
 
@@ -75,16 +118,57 @@ function pintarDatos(ctx, d) {
   Estudio.textoAjustado(ctx, texto, FUTURA_CONDENSADA_MEDIA, tam, d.cx, d.base, d.anchoMax);
 }
 
+function pintarJuvenil(ctx, D) {
+  // Velo: solo dentro del cuadro, para no oscurecer las líneas blancas.
+  const c = Estudio.caja();
+  const g = ctx.createLinearGradient(0, D.velo.desde, 0, D.velo.hasta);
+  g.addColorStop(0, "rgba(0,0,0,0)");
+  g.addColorStop(1, `rgba(0,0,0,${estado.velo})`);
+  ctx.fillStyle = g;
+  ctx.fillRect(c.x0 + 2, D.velo.desde, c.x1 - c.x0 - 4, c.y1 - D.velo.desde);
+  ctx.fillStyle = "#fff";
+
+  Estudio.pintarEscudos(ctx, D.escudos);
+  ctx.textAlign = "center";
+  ctx.font = PLAYFAIR_CURSIVA(Lienzo.tamParaAlto(ctx, PLAYFAIR_CURSIVA, "v", D.vs.alto));
+  ctx.fillText("vs", D.vs.cx, D.vs.base);
+
+  if (titulo) {
+    const [w, h] = [titulo.naturalWidth * D.titulo.escala, titulo.naturalHeight * D.titulo.escala];
+    ctx.drawImage(titulo, D.titulo.cx - w / 2, D.titulo.y, w, h);
+  }
+  pintarDatos(ctx, D.datos);
+}
+
+// Con el juvenil solo se pide una foto: se ocultan las otras dos y su zoom.
+function mostrarFotos() {
+  const juvenil = estado.equipo === "juvenil";
+  document.querySelectorAll(".solo-senior").forEach((el) => (el.hidden = juvenil));
+  document.getElementById("nombre-foto-0").textContent = juvenil ? "Elegir foto" : "Foto de arriba";
+  document.getElementById("nombre-zoom-0").textContent = juvenil ? "Zoom" : "Zoom arriba";
+  document.querySelector(".solo-juvenil").hidden = !juvenil;
+}
+document.querySelectorAll('input[name="equipo"]').forEach((el) => el.addEventListener("change", mostrarFotos));
+Estudio.enlazar("velo", "velo", Number);
+
 Estudio.iniciar({
   nombre: "matchday",
-  disenos: { post: POST, story: STORY },
+  disenos: {
+    senior: { post: POST, story: STORY },
+    juvenil: { post: JUVENIL_POST, story: JUVENIL_STORY },
+  },
   async alCargar() {
     titulo = await Lienzo.cargarImagen(TITULO);
+    mostrarFotos();
   },
   pintarTextos(ctx, D) {
-    Estudio.pintarEscudos(ctx, D.escudos);
-    if (titulo) ctx.drawImage(titulo, D.titulo.x, D.titulo.y);
-    pintarDatos(ctx, D.datos);
+    if (D.tiras) {
+      Estudio.pintarEscudos(ctx, D.escudos);
+      if (titulo) ctx.drawImage(titulo, D.titulo.x, D.titulo.y);
+      pintarDatos(ctx, D.datos);
+    } else {
+      pintarJuvenil(ctx, D);
+    }
   },
 });
 

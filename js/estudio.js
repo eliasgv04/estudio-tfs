@@ -75,7 +75,11 @@ const Estudio = (() => {
   let config = null;
 
   const fmt = () => FORMATOS[estado.formato];
-  const dis = () => config.disenos[estado.formato];
+  // Diseño actual. `config.disenos` es { post, story } o, si la plantilla cambia según la
+  // categoría, { senior: { post, story }, juvenil: { post, story } }.
+  const dis = () => (config.disenos[estado.equipo] || config.disenos)[estado.formato];
+  const todosLosDisenos = () =>
+    Object.values(config.disenos).flatMap((d) => (d.post ? [d.post, d.story] : [d]));
   const caja = () => fmt().caja;
   const img = (src) => (src ? recursos.imagenes[src] : null);
 
@@ -452,10 +456,13 @@ const Estudio = (() => {
 
   /* Fotos: un selector de archivo y un zoom por hueco ("foto"/"zoom" o "foto-0"/"zoom-0"...). */
 
-  const idFoto = (base, i) => (config.disenos.post.tiras ? `${base}-${i}` : base);
+  // Si algún diseño tiene franjas, los campos se llaman foto-0, foto-1…; si no, foto.
+  // Un diseño de una sola foto usa la primera (fotos[0]).
+  const maxFotos = () => Math.max(1, ...todosLosDisenos().map((d) => (d.tiras ? d.tiras.length : 1)));
+  const idFoto = (base, i) => (maxFotos() > 1 ? `${base}-${i}` : base);
 
   function enlazarFotos() {
-    huecos().forEach((_, i) => {
+    Array.from({ length: maxFotos() }).forEach((_, i) => {
       estado.fotos[i] = { img: null, zoom: 1, dx: 0, dy: 0 };
       const zoom = $(idFoto("zoom", i));
       zoom.value = 1;
@@ -622,7 +629,7 @@ const Estudio = (() => {
     );
     // Todas las imágenes de los diseños (plantillas y fondos de los dos formatos).
     const fuentes = new Set();
-    for (const d of Object.values(opciones.disenos)) {
+    for (const d of todosLosDisenos()) {
       if (d.plantilla) fuentes.add(d.plantilla);
       if (d.fondo) fuentes.add(d.fondo.src);
     }
