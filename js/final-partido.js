@@ -101,8 +101,12 @@ Textos.iniciar(() => {
   );
 });
 
-// Último partido según la FFCM, con el resultado calculado a partir de la clasificación
-// (herramientas/ffcm.mjs). El día del partido aún no está: los goles se ponen a mano.
+// Partido según la FFCM, para que la plantilla ya esté preparada y al acabar solo haya
+// que poner los goles: el último jugado si fue hace 2 días o menos (para publicar al día
+// siguiente) y, si no, el próximo. El resultado viene calculado a partir de la
+// clasificación (herramientas/ffcm.mjs) desde la mañana siguiente al partido.
+const DIAS_TRAS_PARTIDO = 2;
+
 function ponerGoles(nuestros, rival) {
   for (const [id, clave, valor] of [["goles-nuestros", "golesNuestros", nuestros], ["goles-rival", "golesRival", rival]]) {
     estado[clave] = String(valor);
@@ -111,20 +115,30 @@ function ponerGoles(nuestros, rival) {
   Estudio.refrescar();
 }
 
+// Días que han pasado desde una fecha AAAA-MM-DD hasta hoy (en España).
+function diasDesde(fecha) {
+  const hoy = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
+  return (Date.parse(hoy) - Date.parse(fecha)) / 86400000;
+}
+
 Ffcm.iniciar((d) => {
-  const p = d.ultima && Ffcm.nuestroPartido(d.ultima);
+  const ultimo = d.ultima && Ffcm.nuestroPartido(d.ultima);
+  const reciente = ultimo && diasDesde(ultimo.fecha) <= DIAS_TRAS_PARTIDO;
+  const jornada = reciente ? d.ultima : d.proxima;
+  const p = jornada && Ffcm.nuestroPartido(jornada);
   if (!p) {
-    // Sin partido de esta categoría (no ha empezado la liga, descansamos…): se vacía para
-    // que no se quede el de la otra categoría.
+    // Sin partido de esta categoría (fin de liga, descansamos…): se vacía para que no se
+    // quede el de la otra categoría.
     Estudio.ponerPartido({ rival: "", escudo: "", enCasa: true });
     ponerGoles("", "");
-    if (!d.ultima) Ffcm.falta(d);
-    return `Jornada ${d.ultima.n}: descansamos`;
+    if (!jornada) Ffcm.falta(d);
+    return `Jornada ${jornada.n}: descansamos`;
   }
   Estudio.ponerPartido(p);
-  const partido = d.ultima.partidos.find((x) => Ffcm.esNuestro(x.local) || Ffcm.esNuestro(x.visitante));
+  const partido = jornada.partidos.find((x) => Ffcm.esNuestro(x.local) || Ffcm.esNuestro(x.visitante));
   const goles = partido?.goles ? (p.enCasa ? partido.goles : [...partido.goles].reverse()) : ["", ""];
   ponerGoles(goles[0], goles[1]);
-  const resultado = partido?.goles ? ` · ${partido.goles.join("-")}` : " (pon los goles)";
-  return `Jornada ${d.ultima.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival}${resultado}`;
+  const cuando = Textos.fechaTexto(p.fecha) + (p.hora ? ` a las ${p.hora}` : "");
+  const resultado = partido?.goles ? ` · ${partido.goles.join("-")}` : " · al acabar, pon los goles";
+  return `Jornada ${jornada.n}: ${p.enCasa ? "en casa" : "fuera"} contra ${p.rival}, ${cuando}${resultado}`;
 });
