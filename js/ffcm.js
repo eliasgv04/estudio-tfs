@@ -1,5 +1,5 @@
 /* Rellena las plantillas con los datos de la FFCM.
-   Los lee de data/ffcm-<equipo>.json, que deja la GitHub Action de los lunes
+   Los lee de data/ffcm-<equipo>.json, que deja cada mañana la GitHub Action
    (herramientas/ffcm.mjs). Al abrir la página y al cambiar de sénior a juvenil cada
    plantilla aplica los suyos; todo queda editable. Los marcadores no vienen
    (la FFCM los protege), así que los goles siguen siendo a mano. */
@@ -31,13 +31,24 @@ const Ffcm = (() => {
     return { rival: r.nombre, escudo: r.escudo, enCasa, fecha: p.fecha, hora: p.hora, pabellon: pabellon(p.campo) };
   }
 
+  const hoy = () => new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
+
+  // Fecha real de una jornada para nosotros: la de nuestro partido o, si descansamos, la
+  // del primero. La de la FFCM es la oficial (sábado) y los partidos pueden ser otro día.
+  function fechaReal(datos, j) {
+    const partidos = datos.partidos[j.n]?.partidos || [];
+    const nuestro = partidos.find((p) => esNuestro(p.local) || esNuestro(p.visitante));
+    if (nuestro?.fecha) return nuestro.fecha;
+    return partidos.map((p) => p.fecha).filter(Boolean).sort()[0] || j.fecha;
+  }
+
   // Última jornada ya llegada y próxima (hoy incluido; el día de partido son la misma),
   // con sus partidos si están en los datos.
   function situar(datos) {
-    const hoy = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
+    const h = hoy();
     const conPartidos = (j) => (j && datos.partidos[j.n] ? { ...j, ...datos.partidos[j.n] } : null);
-    const ultima = [...datos.jornadas].reverse().find((j) => j.fecha <= hoy);
-    const proxima = datos.jornadas.find((j) => j.fecha >= hoy);
+    const ultima = [...datos.jornadas].reverse().find((j) => fechaReal(datos, j) <= h);
+    const proxima = datos.jornadas.find((j) => fechaReal(datos, j) >= h);
     return { ...datos, ultima: conPartidos(ultima), proxima: conPartidos(proxima) };
   }
 
@@ -90,11 +101,11 @@ const Ffcm = (() => {
 
   // Para cuando la plantilla necesita una jornada que no está en los datos.
   const falta = (datos) => {
-    const hoy = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
-    if (datos.jornadas.length && datos.jornadas[0].fecha > hoy) {
-      throw new Error(`La liga empieza el ${Textos.fechaTexto(datos.jornadas[0].fecha)}`);
+    const primera = datos.jornadas[0] && fechaReal(datos, datos.jornadas[0]);
+    if (primera && primera > hoy()) {
+      throw new Error(`Nuestro primer partido es el ${Textos.fechaTexto(primera)}`);
     }
-    throw new Error("Los datos de la FFCM no llegan a esta jornada (se actualizan los lunes)");
+    throw new Error("Los datos de la FFCM no llegan a esta jornada (se actualizan cada mañana)");
   };
 
   return { iniciar, rival, esNuestro, nuestroPartido, falta };

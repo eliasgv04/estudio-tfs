@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-02T14:34:55.838Z",
+ "actualizado": "2026-11-04T12:12:09.367Z",
  "jornadas": [
   {
    "n": 1,
@@ -334,43 +334,8 @@
      "local": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
      "visitante": "C.D. SAN CARLOS DEL VALLE",
      "fecha": "2026-11-07",
-     "hora": "",
+     "hora": "16:30",
      "campo": "P.M. DE DAIMIEL"
-    },
-    {
-     "local": "VILLARRUBIA FS",
-     "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
-    },
-    {
-     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
-     "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "P.M. ANTONIO RIVILLA"
-    },
-    {
-     "local": "F.S. PORZUNA",
-     "visitante": "C.D. F.S. CHILLON",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "P.M. DE PORZUNA"
-    },
-    {
-     "local": "FUTSAL CORRALEÑO",
-     "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "PABELLON JUAN DE DIOS ROMAN"
-    },
-    {
-     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
-     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "fecha": "2026-11-07",
-     "hora": "",
-     "campo": "P.M. DE TORRENUEVA"
     },
     {
      "local": "ACEITES MORAL ORO F.S. \"B\"",
@@ -378,6 +343,41 @@
      "fecha": "2026-11-07",
      "hora": "17:00",
      "campo": "P.M. DE MORAL DE CALATRAVA"
+    },
+    {
+     "local": "VILLARRUBIA FS",
+     "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
+     "fecha": "2026-11-07",
+     "hora": "18:30",
+     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
+    },
+    {
+     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "fecha": "2026-11-07",
+     "hora": "19:00",
+     "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-11-07",
+     "hora": "19:10",
+     "campo": "P.M. DE TORRENUEVA"
+    },
+    {
+     "local": "F.S. PORZUNA",
+     "visitante": "C.D. F.S. CHILLON",
+     "fecha": "2026-11-07",
+     "hora": "19:30",
+     "campo": "P.M. DE PORZUNA"
+    },
+    {
+     "local": "FUTSAL CORRALEÑO",
+     "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
+     "fecha": "2026-11-07",
+     "hora": "20:30",
+     "campo": "PABELLON JUAN DE DIOS ROMAN"
     }
    ]
   },

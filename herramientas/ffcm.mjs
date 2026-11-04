@@ -1,5 +1,5 @@
 /* Lee de la web pública de la FFCM los datos del grupo y los guarda en data/ffcm-<equipo>.json
-   para que las plantillas se rellenen solas. Lo ejecuta la GitHub Action de los lunes.
+   para que las plantillas se rellenen solas. Lo ejecuta cada mañana la GitHub Action.
 
    Se leen: fechas de cada jornada, clasificación y, de la última y las próximas jornadas,
    los partidos con equipos, fecha, hora y pabellón.
@@ -150,8 +150,8 @@ async function leerGrupo(g) {
     return clasificaciones.get(n);
   };
 
-  // Partidos de la última jornada ya llegada y de las dos siguientes: así sirven toda la
-  // semana aunque la Action no vuelva a ejecutarse hasta el lunes siguiente.
+  // Partidos de la última jornada ya llegada y de las dos siguientes: así siguen sirviendo
+  // aunque la Action falle algún día.
   const hoy = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
   const i = jornadas.findIndex((j) => j.fecha >= hoy);
   const desde = Math.max(0, (i < 0 ? jornadas.length : i) - 1);
@@ -160,8 +160,9 @@ async function leerGrupo(g) {
     partidos[j.n] = leerJornada(
       await pagina(`NFG_CmpJornada?cod_primaria=1000120&CodCompeticion=${g.competicion}&CodGrupo=${g.grupo}&CodTemporada=${g.temporada}&CodJornada=${j.n}`),
     );
-    // Resultados solo de jornadas ya pasadas (el día de partido aún no están).
-    if (j.fecha < hoy) {
+    // Resultados en cuanto ha pasado el día de algún partido de la jornada (hay partidos en
+    // viernes). Los que aún no se han jugado no cuadran y se quedan sin resultado.
+    if (partidos[j.n].partidos.some((p) => p.fecha && p.fecha < hoy)) {
       calcularResultados(partidos[j.n].partidos, await clasificacionTras(j.n - 1), await clasificacionTras(j.n));
     }
   }

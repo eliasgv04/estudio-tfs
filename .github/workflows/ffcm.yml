@@ -1,12 +1,13 @@
 # Lee de la web de la FFCM calendario, horarios, pabellones y clasificación y los guarda
 # en data/ para que las plantillas se rellenen solas.
-# Se ejecuta los lunes por la mañana, a mano desde la pestaña Actions (también desde la
-# app de GitHub en el móvil) y cuando cambia el propio lector.
+# Se ejecuta cada mañana (la FFCM va publicando horas y cambios de fecha durante la semana),
+# a mano desde la pestaña Actions (también desde la app de GitHub en el móvil) y cuando
+# cambia el propio lector.
 name: Datos de la FFCM
 
 on:
   schedule:
-    - cron: "0 6 * * 1" # lunes 06:00 UTC (7:00-8:00 en España)
+    - cron: "0 6 * * *" # todos los días a las 06:00 UTC (7:00-8:00 en España)
   workflow_dispatch:
   push:
     branches: [main]
