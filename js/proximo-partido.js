@@ -94,18 +94,48 @@ Estudio.iniciar({
   },
 });
 
+/* Texto: los dos próximos partidos (sénior y juvenil) en una lista por fecha, porque se
+   publican siempre juntos. El de la categoría abierta sale del formulario; el de la otra,
+   de lo último que se puso en el formulario para ella o, si no, de la FFCM. */
+const CATEGORIAS = ["senior", "juvenil"];
+const desdeFormulario = {};
+const desdeFfcm = {};
+const partidoActual = () => ({
+  rival: estado.rival.trim(), enCasa: estado.enCasa, fecha: estado.fecha, hora: estado.hora, pabellon: estado.pabellon,
+});
+Estudio.alCambiar(() => (desdeFormulario[estado.equipo] = partidoActual()));
+Estudio.listo.then(async () => {
+  for (const eq of CATEGORIAS) desdeFfcm[eq] = await Ffcm.proximoPartido(eq);
+  Estudio.refrescar();
+});
+
+function lineasPartido(eq, p) {
+  const nuestro = `{f:${Textos.nuestro(eq)}}`;
+  const rival = p.rival || "Rival";
+  const [local, visitante] = p.enCasa ? [nuestro, rival] : [rival, nuestro];
+  const fecha = Textos.fechaTexto(p.fecha);
+  const cuando = [fecha && fecha.charAt(0).toUpperCase() + fecha.slice(1), p.hora && `${p.hora}h`].filter(Boolean).join(" · ");
+  return [cuando && `📅 ${cuando}`, `🆚 ${local} vs ${visitante}`, p.pabellon.trim() && `📍 ${Textos.capitalizar(p.pabellon)}`];
+}
+
 Textos.iniciar(() => {
-  const [local, visitante] = Textos.equipos();
-  const fecha = Textos.fechaTexto(estado.fecha);
+  const partidos = CATEGORIAS.map((eq) => ({
+    eq,
+    p: eq === estado.equipo ? partidoActual() : desdeFormulario[eq] || desdeFfcm[eq],
+  }))
+    .filter(({ p }) => p && p.rival)
+    .sort((a, b) => `${a.p.fecha || "9"} ${a.p.hora}`.localeCompare(`${b.p.fecha || "9"} ${b.p.hora}`));
+  if (!partidos.length) partidos.push({ eq: estado.equipo, p: partidoActual() });
+
+  const enCasa = partidos.filter(({ p }) => p.enCasa).length;
+  const despedida =
+    enCasa === partidos.length ? "¡Os esperamos en el pabellón! 💛💚"
+    : enCasa === 0 ? "¡A por los tres puntos! 💛💚"
+    : "¡A por los dos partidos! Os esperamos en el pabellón 💛💚";
   return Textos.unir(
-    ["{c:próximo} {f:PARTIDO} ⚽️"],
-    [
-      `🆚 ${local} vs ${visitante}`,
-      fecha && `📅 ${fecha.charAt(0).toUpperCase() + fecha.slice(1)}`,
-      estado.hora && `⏰ ${estado.hora}h`,
-      estado.pabellon.trim() && `📍 ${Textos.capitalizar(estado.pabellon)}`,
-    ],
-    [estado.enCasa ? "¡Os esperamos en el pabellón! 💛💚" : "¡A por los tres puntos! 💛💚"],
+    [partidos.length > 1 ? "{c:próximos} {f:PARTIDOS} ⚽️" : "{c:próximo} {f:PARTIDO} ⚽️"],
+    ...partidos.map(({ eq, p }) => lineasPartido(eq, p)),
+    [despedida],
   );
 });
 

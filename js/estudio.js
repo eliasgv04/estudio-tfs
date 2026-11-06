@@ -654,7 +654,7 @@ const Estudio = (() => {
     ponerPartido,
     equiposEnOrden, textoAjustado, dibujarEnCaja, pintarEscudos, fechaLarga, horaTexto,
     FUTURA, FUTURA_CONDENSADA, FUTURA_CONDENSADA_MEDIA, PLAYFAIR, PLAYFAIR_CURSIVA, ANTON,
-    EQUIPOS, EQUIPOS_CORTOS, NUESTRO,
+    EQUIPOS, EQUIPOS_CORTOS, NUESTRO, PABELLON_CASA,
     pintarTituloJornada, pintarVeloJornada, rellenarEquipos,
   };
 })();

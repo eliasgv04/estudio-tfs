@@ -10,10 +10,10 @@ const Ffcm = (() => {
 
   // "CONSTR. NACO F.S. PIEDRABUENA" -> rival de la lista (por su palabra clave). Si hay
   // varias claves que encajan, gana la más larga ("CIUDAD DE PUERTOLLANO" a "PUERTOLLANO").
-  function rival(nombre) {
+  function rival(nombre, categoria = Estudio.estado.equipo) {
     const n = sinTildes(nombre);
     const r = Estudio.recursos.rivales
-      .filter((r) => r.categoria === Estudio.estado.equipo && r.clave && n.includes(r.clave))
+      .filter((r) => r.categoria === categoria && r.clave && n.includes(r.clave))
       .sort((a, b) => b.clave.length - a.clave.length)[0];
     return r ? { nombre: r.nombre, escudo: r.escudo } : { nombre: Textos.capitalizar(nombre), escudo: "" };
   }
@@ -23,12 +23,14 @@ const Ffcm = (() => {
     campo.toUpperCase().replace(/^P\.\s*M\.\s*/, "PABELLÓN MUNICIPAL ").replace(/\bPABELLON\b/, "PABELLÓN");
 
   // Nuestro partido de una jornada, listo para Estudio.ponerPartido().
-  function nuestroPartido(jornada) {
+  function nuestroPartido(jornada, categoria) {
     const p = jornada && jornada.partidos.find((p) => esNuestro(p.local) || esNuestro(p.visitante));
     if (!p) return null;
     const enCasa = esNuestro(p.local);
-    const r = rival(enCasa ? p.visitante : p.local);
-    return { rival: r.nombre, escudo: r.escudo, enCasa, fecha: p.fecha, hora: p.hora, pabellon: pabellon(p.campo) };
+    const r = rival(enCasa ? p.visitante : p.local, categoria);
+    // En casa, siempre nuestro nombre de pabellón (la FFCM lo llama "P.M. DE TORRENUEVA").
+    const sitio = enCasa ? Estudio.PABELLON_CASA : pabellon(p.campo);
+    return { rival: r.nombre, escudo: r.escudo, enCasa, fecha: p.fecha, hora: p.hora, pabellon: sitio };
   }
 
   const hoy = () => new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Madrid" });
@@ -108,5 +110,15 @@ const Ffcm = (() => {
     throw new Error("Los datos de la FFCM no llegan a esta jornada (se actualizan cada mañana)");
   };
 
-  return { iniciar, rival, esNuestro, nuestroPartido, falta };
+  // Próximo partido de una categoría cualquiera (para textos que juntan sénior y juvenil),
+  // o null si no hay datos.
+  async function proximoPartido(equipo) {
+    try {
+      return nuestroPartido(situar(await cargar(equipo)).proxima, equipo);
+    } catch {
+      return null;
+    }
+  }
+
+  return { iniciar, rival, esNuestro, nuestroPartido, proximoPartido, falta };
 })();

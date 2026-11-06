@@ -67,7 +67,7 @@ const Textos = (() => {
 
   const NUESTRO = { senior: "Torrenueva Futsal", juvenil: "Torrenueva Futsal Juvenil" };
 
-  const nuestro = () => NUESTRO[Estudio.estado.equipo];
+  const nuestro = (equipo = Estudio.estado.equipo) => NUESTRO[equipo];
 
   // [local, visitante] con nuestro nombre en negrita.
   function equipos() {
