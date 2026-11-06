@@ -79,9 +79,14 @@
           Subir otro escudo (PNG en blanco)
           <input type="file" id="subir-escudo" accept="image/png">
         </label>
-        <label>Hora
-          <input type="time" id="hora">
-        </label>
+        <div class="fila">
+          <label>Hora
+            <input type="time" id="hora">
+          </label>
+          <label>Entrada (€)
+            <input type="number" id="entrada" inputmode="decimal" min="0" step="0.5" placeholder="—">
+          </label>
+        </div>
         <label>Pabellón
           <input type="text" id="pabellon" autocomplete="off">
         </label>

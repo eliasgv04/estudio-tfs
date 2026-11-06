@@ -189,14 +189,29 @@ Estudio.iniciar({
   },
 });
 
+// Precio de la entrada: en casa es 2 € para sénior y juvenil; fuera no se pone (lo decide
+// el otro club). Se pone solo al cambiar entre casa y fuera, y se puede cambiar a mano.
+const PRECIO_CASA = "2";
+Object.assign(estado, { entrada: PRECIO_CASA });
+Estudio.enlazar("entrada", "entrada");
+let casaAnterior = estado.enCasa;
+Estudio.alCambiar(() => {
+  if (estado.enCasa === casaAnterior) return;
+  casaAnterior = estado.enCasa;
+  estado.entrada = estado.enCasa ? PRECIO_CASA : "";
+  document.getElementById("entrada").value = estado.entrada;
+});
+
 Textos.iniciar(() => {
   const [local, visitante] = Textos.equipos();
+  const entrada = String(estado.entrada).trim().replace(".", ",");
   return Textos.unir(
     ["{f:MATCH}{c:day} 🔥"],
     [
       `🆚 ${local} vs ${visitante}`,
       estado.hora && `⏰ ${estado.hora}h`,
       estado.pabellon.trim() && `📍 ${Textos.capitalizar(estado.pabellon)}`,
+      entrada && `🎟️ Entrada: ${entrada}€`,
     ],
     [estado.enCasa ? "¡Hoy toca! Todos al pabellón a animar 💛💚" : "¡Hoy toca! Vamos Torrenueva 💛💚"],
   );
