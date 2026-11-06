@@ -108,7 +108,8 @@ const Estudio = (() => {
 
     ctx.setTransform(s, 0, 0, s, 0, 0);
     const logo = recursos.ligas[estado.equipo];
-    if (logo) ctx.drawImage(logo, D.liga.x, D.liga.y, D.liga.tam, D.liga.tam);
+    // Sin `liga` en el diseño no se pone (p. ej. las escuelas deportivas, que no son de la FFCM).
+    if (logo && D.liga) ctx.drawImage(logo, D.liga.x, D.liga.y, D.liga.tam, D.liga.tam);
     ctx.fillStyle = "#fff";
     ctx.textBaseline = "alphabetic";
     config.pintarTextos(ctx, D);
@@ -240,16 +241,21 @@ const Estudio = (() => {
   // En el story todo baja lo mismo que la línea de arriba del cuadro.
   const bajadaStory = () => caja().y0 - FORMATOS.post.caja.y0;
 
-  // "palabra" en Playfair cursiva sobre "JORNADA X" en Anton, alineados a la derecha.
-  function pintarTituloJornada(ctx, palabra, jornada) {
+  // "cursiva" en Playfair sobre "FUERTE" en Anton, alineados a la derecha arriba.
+  function pintarTituloDoble(ctx, cursiva, fuerte) {
     const t = TITULO_JORNADA;
     const dy = bajadaStory();
     ctx.textAlign = "right";
-    const cursiva = Lienzo.tamParaAlto(ctx, PLAYFAIR_CURSIVA, "l", t.altoCursiva);
-    textoAjustado(ctx, palabra, PLAYFAIR_CURSIVA, cursiva, t.derecha - 40, t.baseCursiva + dy, t.anchoMax);
-    const anton = Lienzo.tamParaAlto(ctx, ANTON, "H", t.altoAnton);
+    const tamCursiva = Lienzo.tamParaAlto(ctx, PLAYFAIR_CURSIVA, "l", t.altoCursiva);
+    textoAjustado(ctx, cursiva, PLAYFAIR_CURSIVA, tamCursiva, t.derecha - 40, t.baseCursiva + dy, t.anchoMax);
+    const tamAnton = Lienzo.tamParaAlto(ctx, ANTON, "H", t.altoAnton);
+    textoAjustado(ctx, fuerte, ANTON, tamAnton, t.derecha, t.baseAnton + dy, t.anchoMax);
+  }
+
+  // "palabra" en Playfair cursiva sobre "JORNADA X" en Anton.
+  function pintarTituloJornada(ctx, palabra, jornada) {
     const texto = String(jornada).trim() ? `JORNADA ${String(jornada).trim()}` : "JORNADA";
-    textoAjustado(ctx, texto, ANTON, anton, t.derecha, t.baseAnton + dy, t.anchoMax);
+    pintarTituloDoble(ctx, palabra, texto);
   }
 
   // Degradado oscuro dentro del cuadro (sin tapar las líneas) para que la tabla se lea.
@@ -655,6 +661,6 @@ const Estudio = (() => {
     equiposEnOrden, textoAjustado, dibujarEnCaja, pintarEscudos, fechaLarga, horaTexto,
     FUTURA, FUTURA_CONDENSADA, FUTURA_CONDENSADA_MEDIA, PLAYFAIR, PLAYFAIR_CURSIVA, ANTON,
     EQUIPOS, EQUIPOS_CORTOS, NUESTRO, PABELLON_CASA,
-    pintarTituloJornada, pintarVeloJornada, rellenarEquipos,
+    pintarTituloJornada, pintarTituloDoble, pintarVeloJornada, rellenarEquipos,
   };
 })();

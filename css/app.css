@@ -271,6 +271,11 @@ input[type="range"] { width: 100%; accent-color: var(--amarillo); }
   background: var(--verde);
   box-shadow: 0 0 0 1px #fff;
 }
+/* Escuelas: 5 pestañas con el nombre de la categoría */
+.pestanas-5 { grid-template-columns: repeat(5, 1fr); }
+.pestanas-5 .pestana b { font-family: "Futura Club", sans-serif; font-size: 12px; font-weight: 700; }
+.categoria, .si-juega { display: grid; gap: 10px; }
+
 .cabecera-partido { display: flex; align-items: center; justify-content: space-between; }
 .cabecera-partido span { font-weight: 700; }
 .flecha {
