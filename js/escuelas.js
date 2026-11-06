@@ -1,6 +1,7 @@
 /* Escuelas deportivas (del ayuntamiento, no del Torrenueva Futsal): lo común a las
    plantillas de partidos y resultados.
-   - Cinco categorías; nuestro equipo en cada una es "<CATEGORÍA> FS".
+   - Cinco categorías; nuestro equipo es "AYTO. TORRENUEVA FS" en todas (la categoría ya
+     va en la etiqueta amarilla de cada tarjeta, para no repetirla).
    - Diseño propio, más atrevido que el del sénior (solo comparte el cuadro de líneas y los
      patrocinadores): foto con tinte verde del club, "ESCUELAS" en vertical con contorno a
      la izquierda, logos del club y del ayuntamiento y título arriba, y una tarjeta por
@@ -17,7 +18,10 @@ const Escuelas = (() => {
     { id: "infantil", nombre: "INFANTIL", corto: "Infantil" },
     { id: "cadete", nombre: "CADETE", corto: "Cadete" },
   ];
-  const nuestro = (i) => `${CATEGORIAS[i].nombre} FS`;
+  const NUESTRO = "AYTO. TORRENUEVA FS";
+  const nuestro = () => NUESTRO;
+  // "Alevín" para los textos.
+  const categoria = (i) => CATEGORIAS[i].nombre.charAt(0) + CATEGORIAS[i].nombre.slice(1).toLowerCase();
 
   const LOGOS = { club: "assets/club/escudo-blanco.png", ayuntamiento: "assets/club/ayuntamiento-blanco.png" };
   const AMARILLO = "#f4c51d";
@@ -116,6 +120,7 @@ const Escuelas = (() => {
   function pintarTarjeta(ctx, i, x0, x1, y, h, modo) {
     const e = estado.escuelas[i];
     const k = Math.min(h, 400) / 236;
+    const kd = Math.min(k, 1.3); // lo de la derecha (día, hora, goles) crece menos, para dejar sitio a los nombres
     const top = y + (h - 236 * k) / 2; // contenido centrado si la tarjeta es más alta
     const pad = 40 * k;
 
@@ -148,14 +153,14 @@ const Escuelas = (() => {
     const filas = [top + 135 * k, top + 202 * k];
     const tamNombre = tam(ctx, FUTURA(700), "H", 33 * k);
     // En partidos se deja a la derecha sitio para el día y la hora.
-    const anchoNombres = (derecha - xt) * (modo === "partidos" ? 0.56 : 0.8);
+    const anchoNombres = (derecha - xt) * (modo === "partidos" ? 0.6 : 0.8);
 
     if (!e.juega) {
       ctx.globalAlpha = 0.85;
-      Estudio.textoAjustado(ctx, nuestro(i), FUTURA(700), tamNombre, xt, filas[0] + 30 * k, anchoNombres);
+      Estudio.textoAjustado(ctx, nuestro(i), FUTURA(700), tamNombre, xt, filas[0] + 30 * k, (derecha - xt) * 0.58);
       ctx.fillStyle = AMARILLO;
       ctx.textAlign = "right";
-      ctx.font = PLAYFAIR_CURSIVA(tam(ctx, PLAYFAIR_CURSIVA, "d", 58 * k));
+      ctx.font = PLAYFAIR_CURSIVA(tam(ctx, PLAYFAIR_CURSIVA, "d", 58 * kd));
       ctx.fillText("descansa", derecha, filas[0] + 34 * k);
       ctx.fillStyle = "#fff";
       ctx.globalAlpha = 1;
@@ -175,10 +180,10 @@ const Escuelas = (() => {
       // A la derecha: el día grande y la hora en amarillo.
       ctx.textAlign = "right";
       const dia = fechaCorta(e.fecha);
-      if (dia) Estudio.textoAjustado(ctx, dia, ANTON, tam(ctx, ANTON, "H", 44 * k), derecha, filas[0] - 4 * k, (derecha - xt) * 0.32);
+      if (dia) Estudio.textoAjustado(ctx, dia, ANTON, tam(ctx, ANTON, "H", 44 * kd), derecha, filas[0] - 4 * k, (derecha - xt) * 0.34);
       if (e.hora) {
         ctx.fillStyle = AMARILLO;
-        ctx.font = ANTON(tam(ctx, ANTON, "H", 64 * k));
+        ctx.font = ANTON(tam(ctx, ANTON, "H", 64 * kd));
         ctx.fillText(`${e.hora}H`, derecha, filas[1] + 4 * k);
         ctx.fillStyle = "#fff";
       }
@@ -187,7 +192,7 @@ const Escuelas = (() => {
       const goles = e.enCasa ? [e.gn, e.gr] : [e.gr, e.gn];
       const hay = goles.some((g) => String(g) !== "");
       ctx.textAlign = "right";
-      ctx.font = PLAYFAIR(tam(ctx, PLAYFAIR, "0", 54 * k));
+      ctx.font = PLAYFAIR(tam(ctx, PLAYFAIR, "0", 54 * kd));
       equipos.forEach((eq, f) => {
         ctx.fillStyle = eq.nuestro ? AMARILLO : "#fff";
         ctx.fillText(hay ? String(goles[f] || 0) : "–", derecha, filas[f] + 6 * k);
@@ -280,7 +285,7 @@ const Escuelas = (() => {
             <input type="text" data-campo="lugar" autocomplete="off">
           </label>` : `
           <div class="fila">
-            <label>Goles ${c.nombre.toLowerCase()} FS <input type="number" data-campo="gn" inputmode="numeric" min="0"></label>
+            <label>Goles Ayto. Torrenueva <input type="number" data-campo="gn" inputmode="numeric" min="0"></label>
             <label>Goles rival <input type="number" data-campo="gr" inputmode="numeric" min="0"></label>
           </div>`}
         </div>`;
@@ -349,5 +354,5 @@ const Escuelas = (() => {
     activar(0);
   }
 
-  return { CATEGORIAS, DISENOS, nuestro, enOrden, enOrdenTexto, fechaCorta, cargarLogos, pintar, crearFormulario };
+  return { CATEGORIAS, DISENOS, nuestro, categoria, enOrden, enOrdenTexto, fechaCorta, cargarLogos, pintar, crearFormulario };
 })();

@@ -24,11 +24,11 @@ Estudio.iniciar({
 Textos.iniciar(() => {
   const lineas = Escuelas.CATEGORIAS.map((c, i) => {
     const e = estado.escuelas[i];
-    if (!e.juega) return `🔹 {f:${Escuelas.nuestro(i)}}: descansa`;
+    if (!e.juega) return `🔹 {f:${Escuelas.categoria(i)}}: descansa`;
     const [local, visitante] = Escuelas.enOrdenTexto(i);
     const [gl, gv] = e.enCasa ? [e.gn, e.gr] : [e.gr, e.gn];
     const marcador = String(gl) !== "" || String(gv) !== "" ? ` {f:${gl || 0} - ${gv || 0}} ` : " vs ";
-    return `🔹 ${local}${marcador}${visitante}`;
+    return `🔹 {f:${Escuelas.categoria(i)}}: ${local}${marcador}${visitante}`;
   });
   return Textos.unir(["{c:escuelas} {f:DEPORTIVAS} ⚽️", "Resultados del fin de semana"], lineas, ["¡Bien, chavales! 💛💚"]);
 });
