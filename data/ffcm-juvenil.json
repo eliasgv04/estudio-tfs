@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-06T13:50:46.518Z",
+ "actualizado": "2026-11-07T12:34:46.427Z",
  "jornadas": [
   {
    "n": 1,
@@ -77,6 +77,22 @@
  "clasificacion": [
   {
    "pos": 1,
+   "equipo": "TRT TRAILER DAIMIEL FUTBOL SALA",
+   "pts": 3,
+   "pj": 1,
+   "gf": 7,
+   "gc": 3
+  },
+  {
+   "pos": 2,
+   "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
+   "pts": 3,
+   "pj": 1,
+   "gf": 3,
+   "gc": 2
+  },
+  {
+   "pos": 3,
    "equipo": "C.D. CARRIÓN DE CALATRAVA F.S.",
    "pts": 0,
    "pj": 0,
@@ -84,7 +100,7 @@
    "gc": 0
   },
   {
-   "pos": 2,
+   "pos": 4,
    "equipo": "C.D. CIUDAD DE PUERTOLLANO",
    "pts": 0,
    "pj": 0,
@@ -92,7 +108,7 @@
    "gc": 0
   },
   {
-   "pos": 3,
+   "pos": 5,
    "equipo": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
    "pts": 0,
    "pj": 0,
@@ -100,24 +116,8 @@
    "gc": 0
   },
   {
-   "pos": 4,
-   "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
-  },
-  {
-   "pos": 5,
-   "equipo": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
-  },
-  {
    "pos": 6,
-   "equipo": "FUTSAL CORRALEÑO",
+   "equipo": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
    "pts": 0,
    "pj": 0,
    "gf": 0,
@@ -143,17 +143,17 @@
    "pos": 9,
    "equipo": "TALLERES ARROYO MANZANARES FS JUVENIL",
    "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
+   "pj": 1,
+   "gf": 2,
+   "gc": 3
   },
   {
    "pos": 10,
-   "equipo": "TRT TRAILER DAIMIEL FUTBOL SALA",
+   "equipo": "FUTSAL CORRALEÑO",
    "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
+   "pj": 1,
+   "gf": 3,
+   "gc": 7
   }
  ],
  "partidos": {
@@ -165,77 +165,52 @@
      "visitante": "TRT TRAILER DAIMIEL FUTBOL SALA",
      "fecha": "2026-11-06",
      "hora": "20:00",
-     "campo": "PABELLON JUAN DE DIOS ROMAN"
+     "campo": "PABELLON JUAN DE DIOS ROMAN",
+     "goles": [
+      3,
+      7
+     ]
     },
     {
      "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
      "visitante": "TALLERES ARROYO MANZANARES FS JUVENIL",
      "fecha": "2026-11-06",
      "hora": "20:30",
-     "campo": "P.M. DE TORRENUEVA"
+     "campo": "P.M. DE TORRENUEVA",
+     "goles": [
+      3,
+      2
+     ]
     },
     {
      "local": "MIGUELTURRA F.S.",
      "visitante": "C.D. CIUDAD DE PUERTOLLANO",
      "fecha": "2026-11-07",
      "hora": "16:30",
-     "campo": "P.M. DE MIGUELTURRA"
+     "campo": "P.M. DE MIGUELTURRA",
+     "goles": null
     },
     {
      "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
      "visitante": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
      "fecha": "2026-11-08",
      "hora": "12:00",
-     "campo": "P.M. ANTONIO SERRANO"
+     "campo": "P.M. ANTONIO SERRANO",
+     "goles": null
     },
     {
      "local": "MOLINA CARPINEROS MORAL FS",
      "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "fecha": "2026-11-08",
      "hora": "12:30",
-     "campo": "P.M. DE MORAL DE CALATRAVA"
+     "campo": "P.M. DE MORAL DE CALATRAVA",
+     "goles": null
     }
    ]
   },
   "2": {
    "descansa": null,
-   "partidos": [
-    {
-     "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
-     "visitante": "MIGUELTURRA F.S.",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. DE MEMBRILLA"
-    },
-    {
-     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. DE CARRION DE CALATRAVA"
-    },
-    {
-     "local": "TRT TRAILER DAIMIEL FUTBOL SALA",
-     "visitante": "MOLINA CARPINEROS MORAL FS",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. DE DAIMIEL"
-    },
-    {
-     "local": "TALLERES ARROYO MANZANARES FS JUVENIL",
-     "visitante": "FUTSAL CORRALEÑO",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "MANZANARES ARENA"
-    },
-    {
-     "local": "C.D. CIUDAD DE PUERTOLLANO",
-     "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. ANTONIO RIVILLA"
-    }
-   ]
+   "partidos": []
   },
   "3": {
    "descansa": null,
