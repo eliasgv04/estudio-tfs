@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-07T12:34:46.427Z",
+ "actualizado": "2026-11-08T12:52:13.676Z",
  "jornadas": [
   {
    "n": 1,
@@ -85,6 +85,14 @@
   },
   {
    "pos": 2,
+   "equipo": "MIGUELTURRA F.S.",
+   "pts": 3,
+   "pj": 1,
+   "gf": 7,
+   "gc": 6
+  },
+  {
+   "pos": 3,
    "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
    "pts": 3,
    "pj": 1,
@@ -92,16 +100,8 @@
    "gc": 2
   },
   {
-   "pos": 3,
-   "equipo": "C.D. CARRIÓN DE CALATRAVA F.S.",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
-  },
-  {
    "pos": 4,
-   "equipo": "C.D. CIUDAD DE PUERTOLLANO",
+   "equipo": "C.D. CARRIÓN DE CALATRAVA F.S.",
    "pts": 0,
    "pj": 0,
    "gf": 0,
@@ -125,7 +125,7 @@
   },
   {
    "pos": 7,
-   "equipo": "MIGUELTURRA F.S.",
+   "equipo": "MOLINA CARPINEROS MORAL FS",
    "pts": 0,
    "pj": 0,
    "gf": 0,
@@ -133,11 +133,11 @@
   },
   {
    "pos": 8,
-   "equipo": "MOLINA CARPINEROS MORAL FS",
+   "equipo": "C.D. CIUDAD DE PUERTOLLANO",
    "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
+   "pj": 1,
+   "gf": 6,
+   "gc": 7
   },
   {
    "pos": 9,
@@ -188,7 +188,10 @@
      "fecha": "2026-11-07",
      "hora": "16:30",
      "campo": "P.M. DE MIGUELTURRA",
-     "goles": null
+     "goles": [
+      7,
+      6
+     ]
     },
     {
      "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
