@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-08T12:52:09.361Z",
+ "actualizado": "2026-11-09T15:25:12.076Z",
  "jornadas": [
   {
    "n": 1,
@@ -333,51 +333,51 @@
     {
      "local": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
      "visitante": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "PABELLON REY FELIPE"
-    },
-    {
-     "local": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
-     "visitante": "VILLARRUBIA FS",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "COMPLEJO DEPORTIVO EUFEMIO VELASCO"
-    },
-    {
-     "local": "C.D. F.S. CHILLON",
-     "visitante": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. DE CHILLON"
-    },
-    {
-     "local": "CONSTR. NACO F.S. PIEDRABUENA",
-     "visitante": "F.S. PORZUNA",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. DE PIEDRABUENA"
+     "fecha": "2026-11-13",
+     "hora": "21:15",
+     "campo": "PABELLÓN DON BOSCO"
     },
     {
      "local": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
      "visitante": "FUTSAL CORRALEÑO",
      "fecha": "2026-11-14",
-     "hora": "",
+     "hora": "19:00",
      "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "C.D. F.S. CHILLON",
+     "visitante": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "fecha": "2026-11-14",
+     "hora": "19:30",
+     "campo": "P.M. DE CHILLON"
     },
     {
      "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "visitante": "ACEITES MORAL ORO F.S. \"B\"",
      "fecha": "2026-11-14",
-     "hora": "",
+     "hora": "19:30",
      "campo": "P.M. DE CARRION DE CALATRAVA"
+    },
+    {
+     "local": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "visitante": "VILLARRUBIA FS",
+     "fecha": "2026-11-14",
+     "hora": "19:45",
+     "campo": "COMPLEJO DEPORTIVO EUFEMIO VELASCO"
     },
     {
      "local": "FUTBOL SALA RENACER ARGAMASILLA",
      "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
-     "fecha": "2026-11-14",
-     "hora": "",
+     "fecha": "2026-11-15",
+     "hora": "12:00",
      "campo": "P.M. DE ARGAMASILLA DE ALBA"
+    },
+    {
+     "local": "CONSTR. NACO F.S. PIEDRABUENA",
+     "visitante": "F.S. PORZUNA",
+     "fecha": "2026-11-15",
+     "hora": "12:30",
+     "campo": "P.M. DE PIEDRABUENA"
     }
    ]
   },

@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-08T12:52:13.676Z",
+ "actualizado": "2026-11-09T15:25:15.823Z",
  "jornadas": [
   {
    "n": 1,
@@ -77,6 +77,14 @@
  "clasificacion": [
   {
    "pos": 1,
+   "equipo": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
+   "pts": 3,
+   "pj": 1,
+   "gf": 11,
+   "gc": 7
+  },
+  {
+   "pos": 2,
    "equipo": "TRT TRAILER DAIMIEL FUTBOL SALA",
    "pts": 3,
    "pj": 1,
@@ -84,7 +92,7 @@
    "gc": 3
   },
   {
-   "pos": 2,
+   "pos": 3,
    "equipo": "MIGUELTURRA F.S.",
    "pts": 3,
    "pj": 1,
@@ -92,7 +100,7 @@
    "gc": 6
   },
   {
-   "pos": 3,
+   "pos": 4,
    "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
    "pts": 3,
    "pj": 1,
@@ -100,39 +108,23 @@
    "gc": 2
   },
   {
-   "pos": 4,
-   "equipo": "C.D. CARRIÓN DE CALATRAVA F.S.",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
-  },
-  {
    "pos": 5,
-   "equipo": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
+   "equipo": "C.D. CARRIÓN DE CALATRAVA F.S.",
+   "pts": 1,
+   "pj": 1,
+   "gf": 4,
+   "gc": 4
   },
   {
    "pos": 6,
-   "equipo": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
+   "equipo": "MOLINA CARPINEROS MORAL FS",
+   "pts": 1,
+   "pj": 1,
+   "gf": 4,
+   "gc": 4
   },
   {
    "pos": 7,
-   "equipo": "MOLINA CARPINEROS MORAL FS",
-   "pts": 0,
-   "pj": 0,
-   "gf": 0,
-   "gc": 0
-  },
-  {
-   "pos": 8,
    "equipo": "C.D. CIUDAD DE PUERTOLLANO",
    "pts": 0,
    "pj": 1,
@@ -140,12 +132,20 @@
    "gc": 7
   },
   {
-   "pos": 9,
+   "pos": 8,
    "equipo": "TALLERES ARROYO MANZANARES FS JUVENIL",
    "pts": 0,
    "pj": 1,
    "gf": 2,
    "gc": 3
+  },
+  {
+   "pos": 9,
+   "equipo": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
+   "pts": 0,
+   "pj": 1,
+   "gf": 7,
+   "gc": 11
   },
   {
    "pos": 10,
@@ -199,7 +199,10 @@
      "fecha": "2026-11-08",
      "hora": "12:00",
      "campo": "P.M. ANTONIO SERRANO",
-     "goles": null
+     "goles": [
+      11,
+      7
+     ]
     },
     {
      "local": "MOLINA CARPINEROS MORAL FS",
@@ -207,7 +210,10 @@
      "fecha": "2026-11-08",
      "hora": "12:30",
      "campo": "P.M. DE MORAL DE CALATRAVA",
-     "goles": null
+     "goles": [
+      4,
+      4
+     ]
     }
    ]
   },
