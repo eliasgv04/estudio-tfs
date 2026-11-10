@@ -40,7 +40,7 @@ const Estudio = (() => {
     juvenil: "assets/iconos/liga-juvenil.png", // J Autonómico
   };
 
-  // Nombre de la competición de cada categoría (bajo el título de la jornada).
+  // Nombre de la competición de cada categoría (para los textos de las publicaciones).
   const COMPETICIONES = { senior: "PRIMERA AUTONÓMICA", juvenil: "JUVENIL AUTONÓMICO" };
 
   const ESCUDO_NUESTRO = "assets/club/escudo-blanco.png";
@@ -275,17 +275,10 @@ const Estudio = (() => {
   }
 
   // "palabra" en Playfair cursiva sobre "JORNADA X" en Anton.
-  // Debajo, en una línea fina, la competición, para que se sepa qué categoría es.
+  // "palabra" en Playfair cursiva sobre "JORNADA X" en Anton.
   function pintarTituloJornada(ctx, palabra, jornada) {
     const texto = String(jornada).trim() ? `JORNADA ${String(jornada).trim()}` : "JORNADA";
     pintarTituloDoble(ctx, palabra, texto);
-    const t = TITULO_JORNADA;
-    const alto = estado.formato === "story" ? 44 : 36;
-    ctx.textAlign = "right";
-    ctx.globalAlpha = 0.9;
-    textoAjustado(ctx, COMPETICIONES[estado.equipo], FUTURA_CONDENSADA_MEDIA,
-      Lienzo.tamParaAlto(ctx, FUTURA_CONDENSADA_MEDIA, "H", alto), t.derecha, t.baseAnton + bajadaStory() + alto + 22, t.anchoMax);
-    ctx.globalAlpha = 1;
   }
 
   // Degradado oscuro dentro del cuadro (sin tapar las líneas) para que la tabla se lea.
