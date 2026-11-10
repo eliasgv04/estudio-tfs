@@ -71,7 +71,9 @@ const Estudio = (() => {
     bloqueX: 0, // desplazamiento del bloque de textos respecto a su sitio original
     bloqueY: 0,
     desenfoque: 14, // sigma en px a 2048 (equivale al "7" de desenfoque gaussiano)
-    brillo: -36, // se resta a cada canal (equivale a bajar el brillo de 50 a 43)
+    // Se resta a cada canal: el borde de fuera del cuadro siempre más oscuro que la foto de
+    // dentro (que también se oscurece con degradados, velos o tintes). Igual en todas.
+    brillo: -75,
   };
 
   const recursos = { imagenes: {}, ligas: {}, rivales: [], escudoNuestro: null };
