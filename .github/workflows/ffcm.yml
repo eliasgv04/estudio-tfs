@@ -23,8 +23,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Cada categoría en una máquina distinta (con su propia conexión): la FFCM empieza a dar
+  # páginas vacías tras muchas consultas seguidas desde la misma conexión.
   leer:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        equipo: [senior, juvenil]
     steps:
       - uses: actions/checkout@v4
 
@@ -32,15 +38,38 @@ jobs:
         with:
           node-version: 22
 
-      - name: Leer la FFCM
-        run: node herramientas/ffcm.mjs 2>&1 | tee data/ffcm-registro.txt; exit ${PIPESTATUS[0]}
+      - name: Leer la FFCM (${{ matrix.equipo }})
+        run: node herramientas/ffcm.mjs ${{ matrix.equipo }} 2>&1 | tee registro-${{ matrix.equipo }}.txt; exit ${PIPESTATUS[0]}
+
+      # Si la lectura falla no hay JSON nuevo y se conservan los datos anteriores.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ffcm-${{ matrix.equipo }}
+          path: |
+            data/ffcm-${{ matrix.equipo }}.json
+            registro-${{ matrix.equipo }}.txt
+
+  guardar:
+    needs: leer
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: descargas
 
       - name: Guardar los datos en el repositorio
-        if: always()
         run: |
+          for e in senior juvenil; do
+            if [ -f "descargas/ffcm-$e/data/ffcm-$e.json" ]; then cp "descargas/ffcm-$e/data/ffcm-$e.json" data/; fi
+          done
+          cat descargas/*/registro-*.txt > data/ffcm-registro.txt 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ffcm-*.json data/ffcm-registro.txt || true
+          git add data/ffcm-*.json data/ffcm-registro.txt
           if git diff --cached --quiet; then
             echo "Sin cambios"
           else

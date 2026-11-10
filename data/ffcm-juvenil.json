@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-09T15:25:15.823Z",
+ "actualizado": "2026-11-10T10:09:37.678Z",
  "jornadas": [
   {
    "n": 1,
@@ -219,11 +219,83 @@
   },
   "2": {
    "descansa": null,
-   "partidos": []
+   "partidos": [
+    {
+     "local": "C.D. CIUDAD DE PUERTOLLANO",
+     "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "fecha": "2026-11-13",
+     "hora": "19:45",
+     "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
+     "fecha": "2026-11-14",
+     "hora": "17:00",
+     "campo": "P.M. DE CARRION DE CALATRAVA"
+    },
+    {
+     "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
+     "visitante": "MIGUELTURRA F.S.",
+     "fecha": "2026-11-14",
+     "hora": "19:00",
+     "campo": "P.M. DE MEMBRILLA"
+    },
+    {
+     "local": "TRT TRAILER DAIMIEL FUTBOL SALA",
+     "visitante": "MOLINA CARPINEROS MORAL FS",
+     "fecha": "2026-11-14",
+     "hora": "19:00",
+     "campo": "P.M. DE DAIMIEL"
+    },
+    {
+     "local": "TALLERES ARROYO MANZANARES FS JUVENIL",
+     "visitante": "FUTSAL CORRALEÑO",
+     "fecha": "2026-11-15",
+     "hora": "12:00",
+     "campo": "MANZANARES ARENA"
+    }
+   ]
   },
   "3": {
    "descansa": null,
-   "partidos": []
+   "partidos": [
+    {
+     "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-11-21",
+     "hora": "",
+     "campo": "P.M. DE MEMBRILLA"
+    },
+    {
+     "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
+     "visitante": "TRT TRAILER DAIMIEL FUTBOL SALA",
+     "fecha": "2026-11-21",
+     "hora": "",
+     "campo": "P.M. ANTONIO SERRANO"
+    },
+    {
+     "local": "MOLINA CARPINEROS MORAL FS",
+     "visitante": "TALLERES ARROYO MANZANARES FS JUVENIL",
+     "fecha": "2026-11-21",
+     "hora": "",
+     "campo": "P.M. DE MORAL DE CALATRAVA"
+    },
+    {
+     "local": "FUTSAL CORRALEÑO",
+     "visitante": "C.D. CIUDAD DE PUERTOLLANO",
+     "fecha": "2026-11-21",
+     "hora": "",
+     "campo": "PABELLON JUAN DE DIOS ROMAN"
+    },
+    {
+     "local": "MIGUELTURRA F.S.",
+     "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "fecha": "2026-11-21",
+     "hora": "",
+     "campo": "P.M. DE MIGUELTURRA"
+    }
+   ]
   }
  }
 }

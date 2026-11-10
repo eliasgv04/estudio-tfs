@@ -10,7 +10,7 @@
    partido ya jugado se calcula restando la clasificación de esa jornada menos la de la
    anterior (y se comprueba que cuadre por los dos lados).
 
-   Uso: node herramientas/ffcm.mjs */
+   Uso: node herramientas/ffcm.mjs [senior|juvenil] */
 
 import { readFile, writeFile } from "node:fs/promises";
 
@@ -196,7 +196,10 @@ async function leerGrupo(g, anteriores) {
   return { actualizado: new Date().toISOString(), jornadas, clasificacion: leerClasificacion(clas), partidos };
 }
 
-for (const [equipo, g] of Object.entries(GRUPOS)) {
+// Con un argumento ("senior" o "juvenil") solo se lee esa categoría: la Action lee cada
+// una desde una máquina distinta, porque la FFCM corta tras muchas consultas seguidas.
+const solo = process.argv[2];
+for (const [equipo, g] of Object.entries(GRUPOS).filter(([e]) => !solo || e === solo)) {
   try {
     let anteriores = null;
     try {
