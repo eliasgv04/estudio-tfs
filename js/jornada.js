@@ -61,7 +61,7 @@ Estudio.iniciar({
 Textos.iniciar(() => {
   const j = String(estado.jornada).trim();
   return Textos.unir(
-    [`{c:jornada} {f:${j || "?"}} ⚽️`],
+    [`{c:jornada} {f:${j || "?"}} ⚽️`, Textos.capitalizar(Estudio.COMPETICIONES[estado.equipo])],
     ["📊 {f:CLASIFICACIÓN}", ...Clasificacion.texto()],
     ["🆚 {f:RESULTADOS}", ...Resultados.texto()],
   );
