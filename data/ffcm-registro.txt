@@ -1,5 +1,2 @@
+juvenil: 10 equipos, jornadas con partidos 1,2,3
 senior: 15 equipos, jornadas con partidos 5,6,7
-  respuesta vacía en NFG_CmpJornada: sesión nueva y reintento en 3 s
-  respuesta vacía en NFG_CmpJornada: sesión nueva y reintento en 10 s
-  respuesta vacía en NFG_CmpJornada: sesión nueva y reintento en 30 s
-juvenil: La FFCM devuelve páginas vacías (NFG_CmpJornada)
