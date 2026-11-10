@@ -47,12 +47,13 @@ async function pedir(url) {
   throw new Error("Demasiadas redirecciones en la web de la FFCM");
 }
 
-// Pausa entre consultas. Si se le piden muchas páginas seguidas, la FFCM contesta con
-// respuestas vacías (0 bytes) durante un rato: pasó el 2026-11-09 con el juvenil, que se
-// lee después del sénior. Entonces se espera cada vez más antes de reintentar.
+// Pausa entre consultas. A veces la FFCM contesta a una página con una respuesta vacía
+// (0 bytes) y, mientras dure esa sesión, la sigue dando vacía por mucho que se espere
+// (pasó el 2026-11-09 con las jornadas del juvenil). Con una sesión nueva vuelve a
+// funcionar, así que se reintenta borrando las cookies.
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
 const PAUSA = 1500;
-const ESPERAS_SI_VACIA = [10000, 30000, 60000];
+const ESPERAS_SI_VACIA = [3000, 10000, 30000];
 
 async function pagina(ruta) {
   const url = `${BASE}/NPcd/${ruta}`;
@@ -65,7 +66,8 @@ async function pagina(ruta) {
     const html = new TextDecoder("iso-8859-15").decode(await r.arrayBuffer());
     if (html.length > 1000) return html;
     if (intento >= ESPERAS_SI_VACIA.length) throw new Error(`La FFCM devuelve páginas vacías (${ruta.split("?")[0]})`);
-    console.warn(`  respuesta vacía, se reintenta en ${ESPERAS_SI_VACIA[intento] / 1000} s`);
+    console.warn(`  respuesta vacía en ${ruta.split("?")[0]}: sesión nueva y reintento en ${ESPERAS_SI_VACIA[intento] / 1000} s`);
+    cookies.clear();
     await esperar(ESPERAS_SI_VACIA[intento]);
   }
 }
