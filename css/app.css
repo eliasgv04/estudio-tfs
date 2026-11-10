@@ -459,3 +459,6 @@ main.inicio { max-width: 980px; grid-template-columns: minmax(0, 1fr); gap: 34px
   text-transform: uppercase;
 }
 .pie img { width: min(100%, 720px); height: auto; opacity: 0.85; }
+
+/* Jornada: selector de qué imagen se ve, encima de la vista previa */
+.selector-imagen { max-width: 420px; margin: 0 auto 10px; }

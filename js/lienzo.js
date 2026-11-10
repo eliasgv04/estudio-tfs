@@ -85,27 +85,36 @@ const Lienzo = (() => {
   }
 
   // Exporta el lienzo: en iPhone abre el menú de compartir (Guardar imagen); si no, descarga.
-  async function exportar(canvas, nombre) {
-    const blob = await new Promise((ok) => canvas.toBlob(ok, "image/jpeg", 0.95));
-    const archivo = new File([blob], nombre, { type: "image/jpeg" });
-    if (navigator.canShare && navigator.canShare({ files: [archivo] })) {
+  // Exporta uno o varios lienzos ([{ blob, nombre }]): en iPhone abre el menú de compartir
+  // con todas las imágenes juntas (Guardar imágenes); si no, las descarga una a una.
+  async function exportarVarias(lista) {
+    const archivos = lista.map(({ blob, nombre }) => new File([blob], nombre, { type: "image/jpeg" }));
+    if (navigator.canShare && navigator.canShare({ files: archivos })) {
       try {
-        await navigator.share({ files: [archivo] });
+        await navigator.share({ files: archivos });
         return;
       } catch (e) {
         if (e.name === "AbortError") return;
       }
     }
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = nombre;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    for (const { blob, nombre } of lista) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = nombre;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    }
+  }
+
+  const aBlob = (canvas) => new Promise((ok) => canvas.toBlob(ok, "image/jpeg", 0.95));
+
+  async function exportar(canvas, nombre) {
+    await exportarVarias([{ blob: await aBlob(canvas), nombre }]);
   }
 
   return {
     cargarImagen, dibujarCubriendoRect, medidasCubriendo,
-    desenfocarYBrillo, tamParaAlto, exportar,
+    desenfocarYBrillo, tamParaAlto, exportar, exportarVarias, aBlob,
   };
 })();

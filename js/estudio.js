@@ -131,7 +131,25 @@ const Estudio = (() => {
       Lienzo.desenfocarYBrillo(ctx, ancho, alto, estado.desenfoque * s, estado.brillo);
       ctx.putImageData(nitida, x, y);
     }
+    pintarDegradado(ctx, s);
     if (img(D.plantilla)) ctx.drawImage(img(D.plantilla), 0, 0, ancho, alto);
+  }
+
+  // Degradado negro suave dentro del cuadro, en todas las plantillas: más oscuro arriba y
+  // abajo (donde suelen ir los textos) y apenas en el centro, para que las letras blancas
+  // se lean bien sin que se note. Va bajo el marco, así las líneas siguen blancas.
+  function pintarDegradado(ctx, s) {
+    const c = caja();
+    ctx.save();
+    ctx.setTransform(s, 0, 0, s, 0, 0);
+    const g = ctx.createLinearGradient(0, c.y0, 0, c.y1);
+    g.addColorStop(0, "rgba(0,0,0,0.34)");
+    g.addColorStop(0.32, "rgba(0,0,0,0.14)");
+    g.addColorStop(0.6, "rgba(0,0,0,0.16)");
+    g.addColorStop(1, "rgba(0,0,0,0.42)");
+    ctx.fillStyle = g;
+    ctx.fillRect(c.x0 + 2, c.y0 + 2, c.x1 - c.x0 - 4, c.y1 - c.y0 - 4);
+    ctx.restore();
   }
 
   // Fondo cubriendo el lienzo; `recorte` [x0, y0, x1, y1] usa solo esa zona de la imagen.
@@ -173,6 +191,7 @@ const Estudio = (() => {
       ctx.fillStyle = "rgba(40,24,0,0.45)";
       ctx.fillRect(0, c.y1, fmt().ancho, 156);
     }
+    pintarDegradado(ctx, s);
     if (img(D.plantilla)) ctx.drawImage(img(D.plantilla), 0, 0, fmt().ancho, fmt().alto);
   }
 
@@ -591,21 +610,35 @@ const Estudio = (() => {
     enlazarFotos();
     enlazarArrastre();
 
+    // Guardar: una imagen o, si la plantilla tiene varias (`config.imagenes`, p. ej.
+    // clasificación y resultados), todas con la misma foto y encuadre, de una vez.
     $("exportar").addEventListener("click", async (e) => {
       const boton = e.currentTarget;
+      const texto = boton.textContent;
       boton.disabled = true;
       boton.textContent = "Generando…";
-      const final = document.createElement("canvas");
+      const sufijo = (config.sufijoArchivo ? config.sufijoArchivo() : estado.rival)
+        .trim().toLowerCase().replace(/[^a-z0-9ñáéíóú]+/g, "-") || "partido";
+      const story = estado.formato === "story" ? "-story" : "";
+      const imagenes = config.imagenes || [{ id: null, nombre: config.nombre }];
+      const actual = estado.imagen;
+      const lista = [];
       try {
-        pintar(final, fmt().exportar);
-        const sufijo = (config.sufijoArchivo ? config.sufijoArchivo() : estado.rival)
-          .trim().toLowerCase().replace(/[^a-z0-9ñáéíóú]+/g, "-") || "partido";
-        const story = estado.formato === "story" ? "-story" : "";
-        await Lienzo.exportar(final, `${config.nombre}-${estado.equipo}-${sufijo}${story}.jpg`);
+        for (const im of imagenes) {
+          if (im.id) estado.imagen = im.id;
+          // Un lienzo cada vez y liberado enseguida: en iPhone la memoria de lienzos es poca.
+          const final = document.createElement("canvas");
+          pintar(final, fmt().exportar);
+          lista.push({ blob: await Lienzo.aBlob(final), nombre: `${im.nombre}-${estado.equipo}-${sufijo}${story}.jpg` });
+          final.width = final.height = 0;
+        }
+        estado.imagen = actual;
+        refrescar();
+        await Lienzo.exportarVarias(lista);
       } finally {
-        final.width = final.height = 0; // libera la memoria del lienzo en iPhone
+        estado.imagen = actual;
         boton.disabled = false;
-        boton.textContent = "Guardar imagen";
+        boton.textContent = texto;
       }
     });
   }
