@@ -12,7 +12,7 @@
 
    Uso: node herramientas/ffcm.mjs */
 
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 
 const BASE = "https://www.ffcm.es/pnfg";
 
@@ -47,13 +47,27 @@ async function pedir(url) {
   throw new Error("Demasiadas redirecciones en la web de la FFCM");
 }
 
+// Pausa entre consultas. Si se le piden muchas páginas seguidas, la FFCM contesta con
+// respuestas vacías (0 bytes) durante un rato: pasó el 2026-11-09 con el juvenil, que se
+// lee después del sénior. Entonces se espera cada vez más antes de reintentar.
+const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
+const PAUSA = 1500;
+const ESPERAS_SI_VACIA = [10000, 30000, 60000];
+
 async function pagina(ruta) {
   const url = `${BASE}/NPcd/${ruta}`;
-  let r = await pedir(url);
-  // Si la sesión no estaba activa se acaba en otra página tras el login: se repite.
-  if (!r.url.includes("/NPcd/")) r = await pedir(url);
-  if (!r.ok) throw new Error(`La FFCM respondió ${r.status} en ${ruta}`);
-  return new TextDecoder("iso-8859-15").decode(await r.arrayBuffer());
+  for (let intento = 0; ; intento++) {
+    await esperar(PAUSA);
+    let r = await pedir(url);
+    // Si la sesión no estaba activa se acaba en otra página tras el login: se repite.
+    if (!r.url.includes("/NPcd/")) r = await pedir(url);
+    if (!r.ok) throw new Error(`La FFCM respondió ${r.status} en ${ruta}`);
+    const html = new TextDecoder("iso-8859-15").decode(await r.arrayBuffer());
+    if (html.length > 1000) return html;
+    if (intento >= ESPERAS_SI_VACIA.length) throw new Error(`La FFCM devuelve páginas vacías (${ruta.split("?")[0]})`);
+    console.warn(`  respuesta vacía, se reintenta en ${ESPERAS_SI_VACIA[intento] / 1000} s`);
+    await esperar(ESPERAS_SI_VACIA[intento]);
+  }
 }
 
 const ENTIDADES = { "&nbsp;": " ", "&amp;": "&", "&quot;": '"', "&#39;": "'", "&Aacute;": "Á", "&Eacute;": "É",
@@ -133,7 +147,7 @@ function calcularResultados(partidos, antes, despues) {
   }
 }
 
-async function leerGrupo(g) {
+async function leerGrupo(g, anteriores) {
   const comun = `cod_primaria=1000120&codtemporada=${g.temporada}&codcompeticion=${g.competicion}&codgrupo=${g.grupo}`;
   const urlClasificacion = (n) =>
     `NFG_VisClasificacion?cod_primaria=1000120&codgrupo=${g.grupo}&codcompeticion=${g.competicion}` +
@@ -157,9 +171,20 @@ async function leerGrupo(g) {
   const desde = Math.max(0, (i < 0 ? jornadas.length : i) - 1);
   const partidos = {};
   for (const j of jornadas.slice(desde, desde + 3)) {
-    partidos[j.n] = leerJornada(
-      await pagina(`NFG_CmpJornada?cod_primaria=1000120&CodCompeticion=${g.competicion}&CodGrupo=${g.grupo}&CodTemporada=${g.temporada}&CodJornada=${j.n}`),
-    );
+    const ruta = `NFG_CmpJornada?cod_primaria=1000120&CodCompeticion=${g.competicion}&CodGrupo=${g.grupo}&CodTemporada=${g.temporada}&CodJornada=${j.n}`;
+    // Una jornada siempre tiene partidos: si llega vacía es la FFCM cortando, se reintenta.
+    for (let intento = 1; intento <= 2; intento++) {
+      partidos[j.n] = leerJornada(await pagina(ruta));
+      if (partidos[j.n].partidos.length) break;
+      console.warn(`  jornada ${j.n} sin partidos (intento ${intento})`);
+      await esperar(15000);
+    }
+    // Si sigue vacía, se conservan los partidos que ya teníamos de esa jornada.
+    if (!partidos[j.n].partidos.length && anteriores?.partidos?.[j.n]?.partidos?.length) {
+      console.warn(`  jornada ${j.n}: se conservan los datos anteriores`);
+      partidos[j.n] = anteriores.partidos[j.n];
+      continue;
+    }
     // Resultados en cuanto ha pasado el día de algún partido de la jornada (hay partidos en
     // viernes). Los que aún no se han jugado no cuadran y se quedan sin resultado.
     if (partidos[j.n].partidos.some((p) => p.fecha && p.fecha < hoy)) {
@@ -171,7 +196,11 @@ async function leerGrupo(g) {
 
 for (const [equipo, g] of Object.entries(GRUPOS)) {
   try {
-    const datos = await leerGrupo(g);
+    let anteriores = null;
+    try {
+      anteriores = JSON.parse(await readFile(`data/ffcm-${equipo}.json`, "utf8"));
+    } catch {}
+    const datos = await leerGrupo(g, anteriores);
     await writeFile(`data/ffcm-${equipo}.json`, JSON.stringify(datos, null, 1) + "\n");
     console.log(`${equipo}: ${datos.clasificacion.length} equipos, jornadas con partidos ${Object.keys(datos.partidos)}`);
   } catch (e) {

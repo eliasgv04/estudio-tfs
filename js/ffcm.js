@@ -23,7 +23,11 @@ const Ffcm = (() => {
     campo.toUpperCase().replace(/^P\.\s*M\.\s*/, "PABELLÓN MUNICIPAL ").replace(/\bPABELLON\b/, "PABELLÓN");
 
   // Nuestro partido de una jornada, listo para Estudio.ponerPartido().
+  // Si la jornada viene sin ningún partido no es que descansemos: la FFCM no los dio.
   function nuestroPartido(jornada, categoria) {
+    if (jornada && !jornada.partidos.length) {
+      throw new Error(`Faltan los partidos de la jornada ${jornada.n} en los datos de la FFCM`);
+    }
     const p = jornada && jornada.partidos.find((p) => esNuestro(p.local) || esNuestro(p.visitante));
     if (!p) return null;
     const enCasa = esNuestro(p.local);
