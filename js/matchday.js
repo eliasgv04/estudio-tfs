@@ -74,6 +74,7 @@ const STORY = {
 const CENTRO_X = 1021;
 const JUVENIL_POST = {
   plantilla: "assets/plantillas/clasificacion.png", // solo líneas y patrocinadores
+  degradado: "abajo", // escudos, título y hora (el sénior no lleva: la hora tiene su sombra)
   liga: { x: 240, y: 174, tam: 150 },
   // Degradado oscuro desde `desde` (transparente) hasta `hasta` (opacidad del deslizador).
   velo: { desde: 820, hasta: 1350 },
@@ -92,6 +93,7 @@ const JUVENIL_POST = {
 const BAJA_ABAJO = Estudio.FORMATOS.story.caja.y1 - Estudio.FORMATOS.post.caja.y1;
 const JUVENIL_STORY = {
   plantilla: Estudio.MARCO_STORY,
+  degradado: "abajo",
   liga: { x: 230, y: JUVENIL_POST.liga.y - 10, tam: 190 },
   velo: { desde: JUVENIL_POST.velo.desde + BAJA_ABAJO - 250, hasta: JUVENIL_POST.velo.hasta + BAJA_ABAJO },
   escudos: {

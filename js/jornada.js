@@ -11,12 +11,14 @@ const BAJA_STORY = Estudio.FORMATOS.story.caja.y0 - Estudio.FORMATOS.post.caja.y
 const DISENOS = {
   post: {
     plantilla: "assets/plantillas/clasificacion.png", // solo líneas y patrocinadores
+    degradado: "arriba", // el título (las tablas ya llevan su velo)
     liga: { x: 240, y: 174, tam: 150 },
     clasificacion: Clasificacion.TABLA.post,
     resultados: Resultados.TABLA.post,
   },
   story: {
     plantilla: Estudio.MARCO_STORY,
+    degradado: "arriba",
     liga: { x: 230, y: 174 + BAJA_STORY - 10, tam: 190 },
     clasificacion: Clasificacion.TABLA.story,
     resultados: Resultados.TABLA.story,

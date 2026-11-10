@@ -134,22 +134,25 @@ const Estudio = (() => {
       Lienzo.desenfocarYBrillo(ctx, ancho, alto, estado.desenfoque * s, estado.brillo);
       ctx.putImageData(nitida, x, y);
     }
-    pintarDegradado(ctx, s);
+    pintarDegradado(ctx, s, D);
     if (img(D.plantilla)) ctx.drawImage(img(D.plantilla), 0, 0, ancho, alto);
   }
 
-  // Degradado negro suave dentro del cuadro, en todas las plantillas: más oscuro arriba y
-  // abajo (donde suelen ir los textos) y apenas en el centro, para que las letras blancas
-  // se lean bien sin que se note. Va bajo el marco, así las líneas siguen blancas.
-  function pintarDegradado(ctx, s) {
+  // Degradado negro suave dentro del cuadro, solo donde la plantilla tiene los textos, para
+  // que las letras blancas se lean mejor sin que se note. Cada diseño lo elige con
+  // `degradado`: "arriba", "abajo" o nada. Va bajo el marco, así las líneas siguen blancas.
+  const DEGRADADOS = {
+    arriba: [[0, 0.5], [0.22, 0.28], [0.45, 0]],
+    abajo: [[0.5, 0], [0.75, 0.3], [1, 0.55]],
+  };
+  function pintarDegradado(ctx, s, D) {
+    const paradas = DEGRADADOS[D.degradado];
+    if (!paradas) return;
     const c = caja();
     ctx.save();
     ctx.setTransform(s, 0, 0, s, 0, 0);
     const g = ctx.createLinearGradient(0, c.y0, 0, c.y1);
-    g.addColorStop(0, "rgba(0,0,0,0.34)");
-    g.addColorStop(0.32, "rgba(0,0,0,0.14)");
-    g.addColorStop(0.6, "rgba(0,0,0,0.16)");
-    g.addColorStop(1, "rgba(0,0,0,0.42)");
+    for (const [pos, opacidad] of paradas) g.addColorStop(pos, `rgba(0,0,0,${opacidad})`);
     ctx.fillStyle = g;
     ctx.fillRect(c.x0 + 2, c.y0 + 2, c.x1 - c.x0 - 4, c.y1 - c.y0 - 4);
     ctx.restore();
@@ -194,7 +197,7 @@ const Estudio = (() => {
       ctx.fillStyle = "rgba(40,24,0,0.45)";
       ctx.fillRect(0, c.y1, fmt().ancho, 156);
     }
-    pintarDegradado(ctx, s);
+    pintarDegradado(ctx, s, D);
     if (img(D.plantilla)) ctx.drawImage(img(D.plantilla), 0, 0, fmt().ancho, fmt().alto);
   }
 

@@ -4,6 +4,7 @@
 
 const POST = {
   plantilla: "assets/plantillas/final-partido.png", // ya trae "final PARTIDO" y la raya
+  degradado: "arriba", // título y nombres
   liga: { x: 240, y: 174, tam: 150 },
   // Nombres: alineados a la izquierda; si no caben, el bloque se corre a la izquierda.
   nombres: { x: 826, base1: 703, base2: 742, altoMayus: 24, derechaMax: 1800 },
@@ -17,6 +18,7 @@ const ABAJO = Estudio.FORMATOS.story.caja.y1 - Estudio.FORMATOS.post.caja.y1; //
 // En el story los textos pequeños van ~40 % más grandes: se ve a pantalla completa y de pasada.
 const STORY = {
   plantilla: Estudio.MARCO_STORY,
+  degradado: "arriba",
   liga: { x: 230, y: POST.liga.y + ARRIBA - 10, tam: 190 },
   // Título y raya sacados de la plantilla del post para poder recolocarlos.
   titulo: { src: "assets/plantillas/final-partido-titulo.png", x: 993, y: 199 + ARRIBA },

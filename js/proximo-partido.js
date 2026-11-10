@@ -7,6 +7,7 @@
 // para que no se peguen a "PARTIDO".
 const POST = {
   plantilla: "assets/plantillas/proximo-partido.png",
+  degradado: "abajo", // el bloque de texto va abajo
   liga: { x: 210, y: 155, tam: 152 },
   // "próximo PARTIDO" (separado de la plantilla para poder moverlo).
   titulo: { x: 388, y: 1131 },
@@ -34,6 +35,7 @@ const ALTO_ESCUDO = 295;
 const NOMBRES_BASE2 = ESCUDOS_ABAJO - ALTO_ESCUDO - 42;
 const STORY = {
   plantilla: Estudio.MARCO_STORY,
+  degradado: "abajo",
   liga: { x: 200, y: POST.liga.y + ARRIBA - 10, tam: 190 },
   titulo: { ...POST.titulo, y: NOMBRES_BASE2 - 58 - 34 - 36 - 273 },
   nombres: { ...POST.nombres, base1: NOMBRES_BASE2 - 58, base2: NOMBRES_BASE2, altoMayus: 34 },

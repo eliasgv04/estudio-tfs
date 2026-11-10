@@ -31,6 +31,7 @@ const Escuelas = (() => {
   const DISENOS = {
     post: {
       plantilla: "assets/plantillas/clasificacion.png", // solo líneas y patrocinadores
+      degradado: "arriba", // logos y título (las tarjetas ya tienen fondo)
       vertical: { texto: "ESCUELAS", x: 236, abajo: 1862, arriba: 330, ancho: 360, grosor: 4 },
       cabecera: { x0: 640, x1: 1800, logos: { y: 178, alto: 112, separacion: 30 },
         cursiva: { base: 405, alto: 112 }, fuerte: { base: 572, alto: 150 } },
@@ -38,6 +39,7 @@ const Escuelas = (() => {
     },
     story: {
       plantilla: Estudio.MARCO_STORY,
+      degradado: "arriba",
       vertical: { texto: "ESCUELAS DEPORTIVAS", x: 236, abajo: 3455, arriba: 330, ancho: 360, grosor: 5 },
       cabecera: { x0: 640, x1: 1800, logos: { y: 185, alto: 150, separacion: 36 },
         cursiva: { base: 520, alto: 150 }, fuerte: { base: 740, alto: 205 } },
