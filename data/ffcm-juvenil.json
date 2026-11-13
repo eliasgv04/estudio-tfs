@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-12T14:44:46.068Z",
+ "actualizado": "2026-11-13T14:02:10.137Z",
  "jornadas": [
   {
    "n": 1,
@@ -231,7 +231,7 @@
      "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
      "fecha": "2026-11-14",
-     "hora": "17:00",
+     "hora": "",
      "campo": "P.M. DE CARRION DE CALATRAVA"
     },
     {
@@ -268,20 +268,6 @@
      "campo": "P.M. DE MEMBRILLA"
     },
     {
-     "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
-     "visitante": "TRT TRAILER DAIMIEL FUTBOL SALA",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. ANTONIO SERRANO"
-    },
-    {
-     "local": "MOLINA CARPINEROS MORAL FS",
-     "visitante": "TALLERES ARROYO MANZANARES FS JUVENIL",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. DE MORAL DE CALATRAVA"
-    },
-    {
      "local": "FUTSAL CORRALEÑO",
      "visitante": "C.D. CIUDAD DE PUERTOLLANO",
      "fecha": "2026-11-21",
@@ -294,6 +280,20 @@
      "fecha": "2026-11-21",
      "hora": "",
      "campo": "P.M. DE MIGUELTURRA"
+    },
+    {
+     "local": "MOLINA CARPINEROS MORAL FS",
+     "visitante": "TALLERES ARROYO MANZANARES FS JUVENIL",
+     "fecha": "2026-11-21",
+     "hora": "20:00",
+     "campo": "P.M. DE MORAL DE CALATRAVA"
+    },
+    {
+     "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
+     "visitante": "TRT TRAILER DAIMIEL FUTBOL SALA",
+     "fecha": "2026-11-22",
+     "hora": "12:00",
+     "campo": "P.M. ANTONIO SERRANO"
     }
    ]
   }

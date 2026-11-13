@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-12T14:44:49.180Z",
+ "actualizado": "2026-11-13T14:02:09.644Z",
  "jornadas": [
   {
    "n": 1,
@@ -413,13 +413,6 @@
      "campo": "P.M. ANTONIO RIVILLA"
     },
     {
-     "local": "F.S. PORZUNA",
-     "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. DE PORZUNA"
-    },
-    {
      "local": "FUTSAL CORRALEÑO",
      "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "fecha": "2026-11-21",
@@ -427,10 +420,17 @@
      "campo": "PABELLON JUAN DE DIOS ROMAN"
     },
     {
+     "local": "F.S. PORZUNA",
+     "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+     "fecha": "2026-11-21",
+     "hora": "20:00",
+     "campo": "P.M. DE PORZUNA"
+    },
+    {
      "local": "ACEITES MORAL ORO F.S. \"B\"",
      "visitante": "FUTBOL SALA RENACER ARGAMASILLA",
-     "fecha": "2026-11-21",
-     "hora": "",
+     "fecha": "2026-11-22",
+     "hora": "13:00",
      "campo": "P.M. DE MORAL DE CALATRAVA"
     }
    ]
