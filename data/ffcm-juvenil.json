@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-13T14:02:10.137Z",
+ "actualizado": "2026-11-14T13:04:28.033Z",
  "jornadas": [
   {
    "n": 1,
@@ -77,6 +77,14 @@
  "clasificacion": [
   {
    "pos": 1,
+   "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
+   "pts": 6,
+   "pj": 2,
+   "gf": 10,
+   "gc": 2
+  },
+  {
+   "pos": 2,
    "equipo": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
    "pts": 3,
    "pj": 1,
@@ -84,7 +92,7 @@
    "gc": 7
   },
   {
-   "pos": 2,
+   "pos": 3,
    "equipo": "TRT TRAILER DAIMIEL FUTBOL SALA",
    "pts": 3,
    "pj": 1,
@@ -92,20 +100,12 @@
    "gc": 3
   },
   {
-   "pos": 3,
+   "pos": 4,
    "equipo": "MIGUELTURRA F.S.",
    "pts": 3,
    "pj": 1,
    "gf": 7,
    "gc": 6
-  },
-  {
-   "pos": 4,
-   "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
-   "pts": 3,
-   "pj": 1,
-   "gf": 3,
-   "gc": 2
   },
   {
    "pos": 5,
@@ -125,14 +125,6 @@
   },
   {
    "pos": 7,
-   "equipo": "C.D. CIUDAD DE PUERTOLLANO",
-   "pts": 0,
-   "pj": 1,
-   "gf": 6,
-   "gc": 7
-  },
-  {
-   "pos": 8,
    "equipo": "TALLERES ARROYO MANZANARES FS JUVENIL",
    "pts": 0,
    "pj": 1,
@@ -140,7 +132,7 @@
    "gc": 3
   },
   {
-   "pos": 9,
+   "pos": 8,
    "equipo": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
    "pts": 0,
    "pj": 1,
@@ -148,12 +140,20 @@
    "gc": 11
   },
   {
-   "pos": 10,
+   "pos": 9,
    "equipo": "FUTSAL CORRALEÑO",
    "pts": 0,
    "pj": 1,
    "gf": 3,
    "gc": 7
+  },
+  {
+   "pos": 10,
+   "equipo": "C.D. CIUDAD DE PUERTOLLANO",
+   "pts": 0,
+   "pj": 2,
+   "gf": 6,
+   "gc": 14
   }
  ],
  "partidos": {
@@ -225,35 +225,43 @@
      "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
      "fecha": "2026-11-13",
      "hora": "19:45",
-     "campo": "P.M. ANTONIO RIVILLA"
+     "campo": "P.M. ANTONIO RIVILLA",
+     "goles": [
+      0,
+      7
+     ]
     },
     {
      "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
      "fecha": "2026-11-14",
      "hora": "",
-     "campo": "P.M. DE CARRION DE CALATRAVA"
+     "campo": "P.M. DE CARRION DE CALATRAVA",
+     "goles": null
     },
     {
      "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
      "visitante": "MIGUELTURRA F.S.",
      "fecha": "2026-11-14",
      "hora": "19:00",
-     "campo": "P.M. DE MEMBRILLA"
+     "campo": "P.M. DE MEMBRILLA",
+     "goles": null
     },
     {
      "local": "TRT TRAILER DAIMIEL FUTBOL SALA",
      "visitante": "MOLINA CARPINEROS MORAL FS",
      "fecha": "2026-11-14",
      "hora": "19:00",
-     "campo": "P.M. DE DAIMIEL"
+     "campo": "P.M. DE DAIMIEL",
+     "goles": null
     },
     {
      "local": "TALLERES ARROYO MANZANARES FS JUVENIL",
      "visitante": "FUTSAL CORRALEÑO",
      "fecha": "2026-11-15",
      "hora": "12:00",
-     "campo": "MANZANARES ARENA"
+     "campo": "MANZANARES ARENA",
+     "goles": null
     }
    ]
   },
