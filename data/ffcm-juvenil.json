@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-15T13:32:42.767Z",
+ "actualizado": "2026-11-16T14:59:29.452Z",
  "jornadas": [
   {
    "n": 1,
@@ -172,14 +172,6 @@
      ]
     },
     {
-     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
-     "fecha": "2026-11-14",
-     "hora": "",
-     "campo": "P.M. DE CARRION DE CALATRAVA",
-     "goles": null
-    },
-    {
      "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
      "visitante": "MIGUELTURRA F.S.",
      "fecha": "2026-11-14",
@@ -211,12 +203,27 @@
       7,
       2
      ]
+    },
+    {
+     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
+     "fecha": "2026-12-05",
+     "hora": "",
+     "campo": "P.M. DE CARRION DE CALATRAVA",
+     "goles": null
     }
    ]
   },
   "3": {
    "descansa": null,
    "partidos": [
+    {
+     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "visitante": "MIGUELTURRA F.S.",
+     "fecha": "2026-11-20",
+     "hora": "20:30",
+     "campo": "P.M. DE TORRENUEVA"
+    },
     {
      "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
      "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
@@ -230,13 +237,6 @@
      "fecha": "2026-11-21",
      "hora": "",
      "campo": "PABELLON JUAN DE DIOS ROMAN"
-    },
-    {
-     "local": "MIGUELTURRA F.S.",
-     "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. DE MIGUELTURRA"
     },
     {
      "local": "MOLINA CARPINEROS MORAL FS",
@@ -283,7 +283,7 @@
      "visitante": "MOLINA CARPINEROS MORAL FS",
      "fecha": "2026-11-28",
      "hora": "",
-     "campo": "P.M. ANTONIO RIVILLA"
+     "campo": ""
     },
     {
      "local": "CONFECCIONES CARCONGA TORRENUEVA FS",

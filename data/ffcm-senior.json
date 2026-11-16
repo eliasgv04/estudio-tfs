@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-15T13:32:48.067Z",
+ "actualizado": "2026-11-16T14:59:32.103Z",
  "jornadas": [
   {
    "n": 1,
@@ -331,13 +331,6 @@
    "descansa": "CONFECCIONES CARCONGA TORRENUEVA FS",
    "partidos": [
     {
-     "local": "C.D. SAN CARLOS DEL VALLE",
-     "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "PABELLON MANOLO EL DEL BOMBO"
-    },
-    {
      "local": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
      "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
      "fecha": "2026-11-21",
@@ -345,25 +338,32 @@
      "campo": "P.M. DE DAIMIEL"
     },
     {
-     "local": "VILLARRUBIA FS",
-     "visitante": "C.D. F.S. CHILLON",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
-    },
-    {
-     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
-     "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. ANTONIO RIVILLA"
-    },
-    {
      "local": "FUTSAL CORRALEÑO",
      "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "fecha": "2026-11-21",
      "hora": "",
      "campo": "PABELLON JUAN DE DIOS ROMAN"
+    },
+    {
+     "local": "C.D. SAN CARLOS DEL VALLE",
+     "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
+     "fecha": "2026-11-21",
+     "hora": "19:00",
+     "campo": "PABELLON MANOLO EL DEL BOMBO"
+    },
+    {
+     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "visitante": "CONSTR. NACO F.S. PIEDRABUENA",
+     "fecha": "2026-11-21",
+     "hora": "19:00",
+     "campo": "P.M. ANTONIO RIVILLA"
+    },
+    {
+     "local": "VILLARRUBIA FS",
+     "visitante": "C.D. F.S. CHILLON",
+     "fecha": "2026-11-21",
+     "hora": "19:15",
+     "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
     },
     {
      "local": "F.S. PORZUNA",
@@ -406,13 +406,6 @@
      "campo": "P.M. DE PIEDRABUENA"
     },
     {
-     "local": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
-     "visitante": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. ANTONIO RIVILLA"
-    },
-    {
      "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "visitante": "F.S. PORZUNA",
      "fecha": "2026-11-28",
@@ -432,6 +425,13 @@
      "fecha": "2026-11-28",
      "hora": "",
      "campo": "P.M. DE TORRENUEVA"
+    },
+    {
+     "local": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+     "visitante": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "fecha": "2026-11-28",
+     "hora": "18:00",
+     "campo": "POLIDEPORTIVO SANTIAGO CAÑIZARES"
     }
    ]
   }
