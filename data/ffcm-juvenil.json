@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-16T14:59:29.452Z",
+ "actualizado": "2026-11-17T15:36:30.303Z",
  "jornadas": [
   {
    "n": 1,
@@ -218,6 +218,13 @@
    "descansa": null,
    "partidos": [
     {
+     "local": "FUTSAL CORRALEÑO",
+     "visitante": "C.D. CIUDAD DE PUERTOLLANO",
+     "fecha": "2026-11-20",
+     "hora": "20:00",
+     "campo": "PABELLON JUAN DE DIOS ROMAN"
+    },
+    {
      "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
      "visitante": "MIGUELTURRA F.S.",
      "fecha": "2026-11-20",
@@ -225,25 +232,18 @@
      "campo": "P.M. DE TORRENUEVA"
     },
     {
-     "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
-     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. DE MEMBRILLA"
-    },
-    {
-     "local": "FUTSAL CORRALEÑO",
-     "visitante": "C.D. CIUDAD DE PUERTOLLANO",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "PABELLON JUAN DE DIOS ROMAN"
-    },
-    {
      "local": "MOLINA CARPINEROS MORAL FS",
      "visitante": "TALLERES ARROYO MANZANARES FS JUVENIL",
      "fecha": "2026-11-21",
      "hora": "20:00",
      "campo": "P.M. DE MORAL DE CALATRAVA"
+    },
+    {
+     "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-11-22",
+     "hora": "12:00",
+     "campo": "P.M. DE MEMBRILLA"
     },
     {
      "local": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",

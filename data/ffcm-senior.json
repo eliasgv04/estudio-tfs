@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-16T14:59:32.103Z",
+ "actualizado": "2026-11-17T15:36:30.353Z",
  "jornadas": [
   {
    "n": 1,
@@ -331,25 +331,18 @@
    "descansa": "CONFECCIONES CARCONGA TORRENUEVA FS",
    "partidos": [
     {
-     "local": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
-     "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "P.M. DE DAIMIEL"
-    },
-    {
-     "local": "FUTSAL CORRALEÑO",
-     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "fecha": "2026-11-21",
-     "hora": "",
-     "campo": "PABELLON JUAN DE DIOS ROMAN"
-    },
-    {
      "local": "C.D. SAN CARLOS DEL VALLE",
      "visitante": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
      "fecha": "2026-11-21",
      "hora": "19:00",
      "campo": "PABELLON MANOLO EL DEL BOMBO"
+    },
+    {
+     "local": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
+     "visitante": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "fecha": "2026-11-21",
+     "hora": "19:00",
+     "campo": "P.M. DE DAIMIEL"
     },
     {
      "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
@@ -371,6 +364,13 @@
      "fecha": "2026-11-21",
      "hora": "20:00",
      "campo": "P.M. DE PORZUNA"
+    },
+    {
+     "local": "FUTSAL CORRALEÑO",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-11-21",
+     "hora": "20:00",
+     "campo": "PABELLON JUAN DE DIOS ROMAN"
     },
     {
      "local": "ACEITES MORAL ORO F.S. \"B\"",
