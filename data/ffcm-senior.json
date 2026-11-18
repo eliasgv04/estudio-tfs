@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-17T15:36:30.353Z",
+ "actualizado": "2026-11-18T15:14:32.897Z",
  "jornadas": [
   {
    "n": 1,
@@ -352,18 +352,18 @@
      "campo": "P.M. ANTONIO RIVILLA"
     },
     {
+     "local": "F.S. PORZUNA",
+     "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
+     "fecha": "2026-11-21",
+     "hora": "19:00",
+     "campo": "P.M. DE PORZUNA"
+    },
+    {
      "local": "VILLARRUBIA FS",
      "visitante": "C.D. F.S. CHILLON",
      "fecha": "2026-11-21",
      "hora": "19:15",
      "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
-    },
-    {
-     "local": "F.S. PORZUNA",
-     "visitante": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
-     "fecha": "2026-11-21",
-     "hora": "20:00",
-     "campo": "P.M. DE PORZUNA"
     },
     {
      "local": "FUTSAL CORRALEÑO",

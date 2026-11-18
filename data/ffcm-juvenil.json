@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-17T15:36:30.303Z",
+ "actualizado": "2026-11-18T15:14:36.138Z",
  "jornadas": [
   {
    "n": 1,
@@ -141,7 +141,7 @@
   },
   {
    "pos": 9,
-   "equipo": "C.D. CIUDAD DE PUERTOLLANO",
+   "equipo": "C.D. CIUDAD DE PUERTOLLANO - TALLERES Y GRUAS DEGOBA",
    "pts": 0,
    "pj": 2,
    "gf": 6,
@@ -161,7 +161,7 @@
    "descansa": null,
    "partidos": [
     {
-     "local": "C.D. CIUDAD DE PUERTOLLANO",
+     "local": "C.D. CIUDAD DE PUERTOLLANO - TALLERES Y GRUAS DEGOBA",
      "visitante": "CONFECCIONES CARCONGA TORRENUEVA FS",
      "fecha": "2026-11-13",
      "hora": "19:45",
@@ -219,7 +219,7 @@
    "partidos": [
     {
      "local": "FUTSAL CORRALEÑO",
-     "visitante": "C.D. CIUDAD DE PUERTOLLANO",
+     "visitante": "C.D. CIUDAD DE PUERTOLLANO - TALLERES Y GRUAS DEGOBA",
      "fecha": "2026-11-20",
      "hora": "20:00",
      "campo": "PABELLON JUAN DE DIOS ROMAN"
@@ -279,18 +279,18 @@
      "campo": "MANZANARES ARENA"
     },
     {
-     "local": "C.D. CIUDAD DE PUERTOLLANO",
-     "visitante": "MOLINA CARPINEROS MORAL FS",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": ""
-    },
-    {
      "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
      "visitante": "FUTSAL CORRALEÑO",
      "fecha": "2026-11-28",
      "hora": "",
      "campo": "P.M. DE TORRENUEVA"
+    },
+    {
+     "local": "MOLINA CARPINEROS MORAL FS",
+     "visitante": "C.D. CIUDAD DE PUERTOLLANO - TALLERES Y GRUAS DEGOBA",
+     "fecha": "2026-11-29",
+     "hora": "12:30",
+     "campo": "P.M. DE MORAL DE CALATRAVA"
     }
    ]
   }
