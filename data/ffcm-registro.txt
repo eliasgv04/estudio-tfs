@@ -1,2 +1,2 @@
-juvenil: 10 equipos, jornadas con partidos 2,3,4
-senior: 15 equipos, jornadas con partidos 6,7,8
+juvenil: 10 equipos, jornadas con partidos 3,4,5
+senior: 15 equipos, jornadas con partidos 7,8,9
