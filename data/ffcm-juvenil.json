@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-22T14:11:23.978Z",
+ "actualizado": "2026-11-23T17:32:43.893Z",
  "jornadas": [
   {
    "n": 1,
@@ -218,32 +218,32 @@
    "descansa": null,
    "partidos": [
     {
+     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "visitante": "FUTSAL CORRALEÑO",
+     "fecha": "2026-11-27",
+     "hora": "20:30",
+     "campo": "P.M. DE TORRENUEVA"
+    },
+    {
      "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "visitante": "MIGUELTURRA F.S.",
      "fecha": "2026-11-28",
-     "hora": "",
+     "hora": "17:00",
      "campo": "P.M. DE CARRION DE CALATRAVA"
-    },
-    {
-     "local": "TRT TRAILER DAIMIEL FUTBOL SALA",
-     "visitante": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. DE DAIMIEL"
     },
     {
      "local": "TALLERES ARROYO MANZANARES FS JUVENIL",
      "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
      "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "MANZANARES ARENA"
+     "hora": "17:30",
+     "campo": "PABELLÓN ANTONIO CABA DE MANZANARES"
     },
     {
-     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
-     "visitante": "FUTSAL CORRALEÑO",
+     "local": "TRT TRAILER DAIMIEL FUTBOL SALA",
+     "visitante": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
      "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. DE TORRENUEVA"
+     "hora": "19:30",
+     "campo": "P.M. DE DAIMIEL"
     },
     {
      "local": "MOLINA CARPINEROS MORAL FS",

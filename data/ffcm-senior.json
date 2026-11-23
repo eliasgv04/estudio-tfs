@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-22T14:11:24.446Z",
+ "actualizado": "2026-11-23T17:32:44.379Z",
  "jornadas": [
   {
    "n": 1,
@@ -331,46 +331,18 @@
    "descansa": "SALESIANOS CIUDAD REAL / COMERCIAL MUÑOZ",
    "partidos": [
     {
-     "local": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
-     "visitante": "C.D. SAN CARLOS DEL VALLE",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "COMPLEJO DEPORTIVO EUFEMIO VELASCO"
-    },
-    {
-     "local": "C.D. F.S. CHILLON",
-     "visitante": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. DE CHILLON"
-    },
-    {
-     "local": "CONSTR. NACO F.S. PIEDRABUENA",
-     "visitante": "VILLARRUBIA FS",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. DE PIEDRABUENA"
-    },
-    {
-     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "visitante": "F.S. PORZUNA",
-     "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. DE CARRION DE CALATRAVA"
-    },
-    {
      "local": "FUTBOL SALA RENACER ARGAMASILLA",
      "visitante": "FUTSAL CORRALEÑO",
      "fecha": "2026-11-28",
-     "hora": "",
+     "hora": "16:00",
      "campo": "P.M. DE ARGAMASILLA DE ALBA"
     },
     {
-     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
-     "visitante": "ACEITES MORAL ORO F.S. \"B\"",
+     "local": "CLUB DEPORTIVO TORRALBEÑO/TALAVERANA",
+     "visitante": "C.D. SAN CARLOS DEL VALLE",
      "fecha": "2026-11-28",
-     "hora": "",
-     "campo": "P.M. DE TORRENUEVA"
+     "hora": "16:15",
+     "campo": "COMPLEJO DEPORTIVO EUFEMIO VELASCO"
     },
     {
      "local": "IPC SERVICIOS F.S. / C.D. CIUDAD DE PUERTOLLANO",
@@ -378,6 +350,34 @@
      "fecha": "2026-11-28",
      "hora": "18:00",
      "campo": "POLIDEPORTIVO SANTIAGO CAÑIZARES"
+    },
+    {
+     "local": "C.D. F.S. CHILLON",
+     "visitante": "CODAITRANS DAIMIEL FUTBOL SALA \"B\"",
+     "fecha": "2026-11-28",
+     "hora": "19:30",
+     "campo": "P.M. DE CHILLON"
+    },
+    {
+     "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "visitante": "F.S. PORZUNA",
+     "fecha": "2026-11-28",
+     "hora": "19:30",
+     "campo": "P.M. DE CARRION DE CALATRAVA"
+    },
+    {
+     "local": "CONFECCIONES CARCONGA TORRENUEVA FS",
+     "visitante": "ACEITES MORAL ORO F.S. \"B\"",
+     "fecha": "2026-11-28",
+     "hora": "20:10",
+     "campo": "P.M. DE TORRENUEVA"
+    },
+    {
+     "local": "CONSTR. NACO F.S. PIEDRABUENA",
+     "visitante": "VILLARRUBIA FS",
+     "fecha": "2026-11-29",
+     "hora": "12:30",
+     "campo": "P.M. DE PIEDRABUENA"
     }
    ]
   },
