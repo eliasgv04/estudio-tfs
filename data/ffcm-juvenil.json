@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-23T17:32:43.893Z",
+ "actualizado": "2026-11-24T17:04:05.592Z",
  "jornadas": [
   {
    "n": 1,
@@ -93,11 +93,11 @@
   },
   {
    "pos": 3,
-   "equipo": "MOLINA CARPINEROS MORAL FS",
-   "pts": 4,
-   "pj": 2,
-   "gf": 8,
-   "gc": 6
+   "equipo": "TALLERES ARROYO MANZANARES FS JUVENIL",
+   "pts": 6,
+   "pj": 3,
+   "gf": 13,
+   "gc": 8
   },
   {
    "pos": 4,
@@ -109,11 +109,11 @@
   },
   {
    "pos": 5,
-   "equipo": "TALLERES ARROYO MANZANARES FS JUVENIL",
-   "pts": 3,
-   "pj": 2,
-   "gf": 9,
-   "gc": 5
+   "equipo": "MOLINA CARPINEROS MORAL FS",
+   "pts": 4,
+   "pj": 3,
+   "gf": 11,
+   "gc": 10
   },
   {
    "pos": 6,
@@ -188,7 +188,10 @@
      "fecha": "2026-11-21",
      "hora": "20:00",
      "campo": "P.M. DE MORAL DE CALATRAVA",
-     "goles": null
+     "goles": [
+      3,
+      4
+     ]
     },
     {
      "local": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
