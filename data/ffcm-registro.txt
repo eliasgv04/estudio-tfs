@@ -1,2 +1,5 @@
-juvenil: 10 equipos, jornadas con partidos 3,4,5
+  respuesta vacía en NFG_VisCalendario_Vis: sesión nueva y reintento en 3 s
+  respuesta vacía en NFG_VisCalendario_Vis: sesión nueva y reintento en 10 s
+  respuesta vacía en NFG_VisCalendario_Vis: sesión nueva y reintento en 30 s
+juvenil: La FFCM devuelve páginas vacías (NFG_VisCalendario_Vis)
 senior: 15 equipos, jornadas con partidos 7,8,9
