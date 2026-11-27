@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-26T16:30:42.136Z",
+ "actualizado": "2026-11-27T16:16:27.683Z",
  "jornadas": [
   {
    "n": 1,
@@ -413,13 +413,6 @@
      "campo": "P.M. DE VILLARRUBIA DE LOS OJOS"
     },
     {
-     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
-     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
-     "fecha": "2026-12-05",
-     "hora": "",
-     "campo": "P.M. ANTONIO RIVILLA"
-    },
-    {
      "local": "F.S. PORZUNA",
      "visitante": "FUTBOL SALA RENACER ARGAMASILLA",
      "fecha": "2026-12-05",
@@ -432,6 +425,13 @@
      "fecha": "2026-12-05",
      "hora": "",
      "campo": "PABELLON JUAN DE DIOS ROMAN"
+    },
+    {
+     "local": "AUTOCARES RIVILLA PUERTOLLANO F.S.",
+     "visitante": "C.D. CARRIÓN DE CALATRAVA F.S.",
+     "fecha": "2026-12-05",
+     "hora": "19:00",
+     "campo": "P.M. ANTONIO RIVILLA"
     }
    ]
   }
