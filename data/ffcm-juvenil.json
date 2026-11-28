@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-27T16:16:31.034Z",
+ "actualizado": "2026-11-28T15:10:03.340Z",
  "jornadas": [
   {
    "n": 1,
@@ -78,9 +78,9 @@
   {
    "pos": 1,
    "equipo": "CONFECCIONES CARCONGA TORRENUEVA FS",
-   "pts": 9,
-   "pj": 3,
-   "gf": 16,
+   "pts": 12,
+   "pj": 4,
+   "gf": 20,
    "gc": 2
   },
   {
@@ -125,19 +125,19 @@
   },
   {
    "pos": 7,
-   "equipo": "FUTSAL CORRALEÑO",
-   "pts": 3,
-   "pj": 3,
-   "gf": 12,
-   "gc": 17
-  },
-  {
-   "pos": 8,
    "equipo": "MIGUELTURRA F.S.",
    "pts": 3,
    "pj": 3,
    "gf": 9,
    "gc": 15
+  },
+  {
+   "pos": 8,
+   "equipo": "FUTSAL CORRALEÑO",
+   "pts": 3,
+   "pj": 4,
+   "gf": 12,
+   "gc": 21
   },
   {
    "pos": 9,
@@ -225,35 +225,43 @@
      "visitante": "FUTSAL CORRALEÑO",
      "fecha": "2026-11-27",
      "hora": "20:30",
-     "campo": "P.M. DE TORRENUEVA"
+     "campo": "P.M. DE TORRENUEVA",
+     "goles": [
+      4,
+      0
+     ]
     },
     {
      "local": "C.D. CARRIÓN DE CALATRAVA F.S.",
      "visitante": "MIGUELTURRA F.S.",
      "fecha": "2026-11-28",
      "hora": "17:00",
-     "campo": "P.M. DE CARRION DE CALATRAVA"
+     "campo": "P.M. DE CARRION DE CALATRAVA",
+     "goles": null
     },
     {
      "local": "TALLERES ARROYO MANZANARES FS JUVENIL",
      "visitante": "F.S. LA SOLANA LA FRAGUA DE PÉREZ",
      "fecha": "2026-11-28",
      "hora": "17:30",
-     "campo": "PABELLÓN ANTONIO CABA DE MANZANARES"
+     "campo": "PABELLÓN ANTONIO CABA DE MANZANARES",
+     "goles": null
     },
     {
      "local": "TRT TRAILER DAIMIEL FUTBOL SALA",
      "visitante": "CLUB DEPORTIVO MEMBRILLA FUTBOL SALA",
      "fecha": "2026-11-28",
      "hora": "19:30",
-     "campo": "P.M. DE DAIMIEL"
+     "campo": "P.M. DE DAIMIEL",
+     "goles": null
     },
     {
      "local": "MOLINA CARPINEROS MORAL FS",
      "visitante": "C.D. CIUDAD DE PUERTOLLANO - TALLERES Y GRUAS DEGOBA",
      "fecha": "2026-11-29",
      "hora": "12:30",
-     "campo": "P.M. DE MORAL DE CALATRAVA"
+     "campo": "P.M. DE MORAL DE CALATRAVA",
+     "goles": null
     }
    ]
   },
